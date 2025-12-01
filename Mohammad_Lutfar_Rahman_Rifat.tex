@@ -1,0 +1,269 @@
+%-------------------------
+% Resume in Latex
+% Author : Harshibar
+% Based off of: https://github.com/jakeryang/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+% only for pdflatex
+% \input{glyphtounicode}
+
+% fontawesome
+\usepackage{fontawesome5}
+
+% fixed width
+\usepackage[scale=0.90,lf]{FiraMono}
+
+% light-grey
+\definecolor{light-grey}{gray}{0.83}
+\definecolor{dark-grey}{gray}{0.3}
+\definecolor{text-grey}{gray}{.08}
+
+\DeclareRobustCommand{\ebseries}{\fontseries{eb}\selectfont}
+\DeclareTextFontCommand{\texteb}{\ebseries}
+
+% custom underline
+\usepackage{contour}
+\usepackage[normalem]{ulem}
+\renewcommand{\ULdepth}{1.8pt}
+\contourlength{0.8pt}
+\newcommand{\myuline}[1]{%
+  \uline{\phantom{#1}}%
+  \llap{\contour{white}{#1}}%
+}
+
+
+% custom font: helvetica-style
+\usepackage{tgheros}
+\renewcommand*\familydefault{\sfdefault} 
+%% Only if the base font of the document is to be sans serif
+\usepackage[T1]{fontenc}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{0in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+% \addtolength{\leftmargin}{1in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% TODO EBSERIES
+% sans serif sections
+\titleformat {\section}{
+    \bfseries \vspace{0pt} \raggedright \large % header section
+}{}{0em}{}[\color{light-grey} {\titlerule[2pt]} \vspace{-4pt}]
+
+% only for pdflatex
+% Ensure that generate pdf is machine readable/ATS parsable
+% \pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small \justifying{
+    {#1 \vspace{-1pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & {\color{dark-grey}\small #2}\vspace{1pt}\\ % top row of resume entry
+      \textit{#3} & {\color{dark-grey} \small #4}\\ % second row of resume entry
+    \end{tabular*}\vspace{-4pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+      #1 & {\color{dark-grey}} \\
+    \end{tabular*}\vspace{-4pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+% CHANGED default leftmargin  0.15 in
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{0pt}}
+
+\color{text-grey}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Large MOHAMMAD LUTFAR RAHMAN RIFAT} \\ \vspace{5pt}
+    \large Software Engineer \\ \vspace{5pt}
+    \small \faPhone* \texttt{+8801728776775} \hspace{1pt} $|$
+    \hspace{1pt} \faEnvelope \hspace{2pt} \texttt{mlrifat370@gmail.com} \hspace{1pt} $|$ \hspace{1pt}
+    \hspace{1pt} \faLinkedin \hspace{2pt} \texttt{\href{https://linkedin.com/in/mlr-rifat/}{mlr-rifat}} \hspace{1pt} $|$  
+    \hspace{1pt} \faGithub \hspace{2pt} \texttt{\href{https://github.com/rifatr}{rifatr}} \hspace{1pt} $|$ 
+    \hspace{1pt} \texttt{\href{https://icpc.global/ICPCID/6CCD8YMF6YLS}{ICPCID}}  \hspace{1pt} 
+    \\ \vspace{-10pt}
+\end{center}
+
+
+%-----------EDUCATION-----------
+\section {EDUCATION}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Rajshahi University of Engineering and Technology}{December 2024}
+      {B.Sc. in Electrical and Computer Engineering}{Rajshahi, Bangladesh}
+  \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------
+\section{EXPERIENCE}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Chaldal Engineering}{June 2024 -- Present}{Software Engineer}{Dhaka, Bangladesh}
+    \resumeItemListStart
+      \resumeItem{Developed core services of \textbf{ChaldalPay}, including QR payments, e-KYC, dispute flows, identity verification modules, admin features, including dispute tools, bulk QR ZIP generation, and wallet control modules.}
+      \resumeItem{Implemented facial verification using \textbf{Amazon Rekognition} and \textbf{DeepFace}, and integrated \textbf{Election Commission NID} API for national ID validation.}
+      \resumeItem{Built secure multi-account bKash wallet binding logic for \textbf{Chaldal} and \textbf{Cookups}, supporting account switching and 1000+ daily transactions.}
+      \resumeItem{Contributed to passing the \textbf{Bangladesh Bank technical audit} for the MFS app; resolved VAPT issues (domain whitelisting, security hardening) for PCI-DSS compliance.}
+      \resumeItem{Building a new \textbf{Payment Gateway} under ChaldalPay with gRPC services and protobuf contracts for merchant payments.}
+      \resumeItem{Delivered full-stack features across app and admin platforms using \textbf{F\#/.NET}, Fable, ReactXP, Docker, Kubernetes, and Azure DevOps CI/CD.}
+    \resumeItemListEnd
+
+
+    \resumeSubheading
+      {Problem Setting in Competitive Programming}{2021 -- Present}
+      {Problem Setter, Judge} {Hybrid}
+      \vspace{-5pt}
+      \resumeItemListStart
+      
+        \item Been judge and setter for national contests incl.
+        \href{https://toph.co/c/iut-11th-national-ict-fest-2024}{\myuline{IUT IUPC 2024}},
+        \href{https://toph.co/c/15th-iiuc-inter-university-2023}{\myuline{IIUC IUPC 2023}},
+        \href{https://toph.co/c/ngpc-2021}{\myuline{NGPC 2021}}, 
+        \href{https://toph.co/c/ada-lovelace-national-girls-2021}{\myuline{ALNGPC 2021}}.
+        % \item[--] \href{https://toph.co/c/tough-duo-april-2022}{Tough Duo, April 2022}
+        % \item[--] \href{https://toph.co/c/criterion-2022-round-17}{Criterion 2022 Round 17}
+        % \item[--] \href{https://toph.co/c/code-to-save-a-mother}{Code To Save A Mother}
+        % \end{itemize}
+
+        \item Authored total ten problems in 
+          \href{https://www.codechef.com/users/rifatrraazz#:~:text=Problems%20Authored%20(2)}{\myuline{Codechef}} and 
+          \href{https://toph.co/u/rifatrraazz/problems}{\myuline{Toph}}.
+      \resumeItemListEnd
+\resumeSubHeadingListEnd
+
+
+%-----------ACHIEVEMENTS-----------
+\section{ACHIEVEMENTS}
+  \vspace{5pt}
+  \resumeItemListStart
+    \item Honorable mention \textbf{ICPC Asia West Continent Final 2022 and 2023} %(\href{https://codedrills.io/contests/icpc-asia-west-continent-final-contest-2022/scoreboard}{\color{llink}47th})
+    
+    \item \textbf{9th} in \href{https://bapsoj.org/contests/icpc-dhaka-regional-site-2023/standings#:~:text=10-,RRR,-RAJSHAHI%20UNIVERSITY%20OF}{\myuline{ICPC Dhaka Regional 2023}}
+    
+    \item \textbf{20th} in \href{https://bapsoj.org/contests/ncpc-onsite-2023-hosted-by-ju/standings#:~:text=(34)-,20,RAJSHAHI%20UNIVERSITY%20OF%20ENGINEERING%20%26%20TECHNOLOGY,-6}{\myuline{NCPC 2023}}
+    
+    \item \textbf{2nd} in \href{https://toph.co/c/tough-dash-june-2023/standings#:~:text=2-,rifatrraazz,-15}{\myuline{Tough Dash, June 2023}}
+    
+    % \item Top \textbf{2\%} ($260/12,330$) in \href{https://www.facebook.com/codingcompetitions/hacker-cup/2022/certificate/322485148790895}{\myuline{Hacker Cup 2022 Round 1}}
+    
+    \item Codeforces Max Rating: \href{https://codeforces.com/profile/rifatrraazz}{\myuline{1661 (Expert)}}
+    
+    \resumeItem{Solved more than \textbf{2000} problems in different online judges}
+  \resumeItemListEnd
+
+
+
+
+%-----------PROJECTS-----------
+
+\section{PROJECTS}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {\href{https://github.com/rifatr/RiShop}{\myuline{\textbf{E-commerce Platform}}}} {} {} {}
+      \resumeItemListStart
+        \vspace {-10pt}
+        \resumeItem{Developed a full-stack e-commerce web application using \textbf{Angular} for the frontend and \textbf{Asp .NET Core (Entity Framework)} for the backend.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {\href{https://github.com/rifatr/TreeExplorer}{\myuline{\textbf{Tree Explorer}}}} {} {} {}
+      \resumeItemListStart
+        \vspace {-10pt}
+        \resumeItem{A React + TypeScript + Vite app that visualizes nested JSON as an expandable/collapsible tree. The UI uses Tailwind CSS and plain React components.}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+
+
+%
+%-----------PROGRAMMING SKILLS-----------
+\section{TECHNICAL SKILLS}
+ \begin{itemize}[leftmargin=0in, label={}]
+    \small{\item{
+     \textbf{Languages:} { F\#, C\#, TypeScript, Javascript, Python, C++}\hspace{220pt} \\
+     \textbf{Frameworks:} { ASP .NET Core, React, Angular, React Native}\hspace{220pt} \\
+     \textbf{Tools:} { Git, MSSQL, Docker, Azure DevOps, Postman, gRPC}\hspace{220pt} \\
+    }}
+ \end{itemize}
+
+
+
+%----------Voluntary Works------------------
+% \section{VOLUNTEERING}
+%     \resumeSubHeadingListStart
+%         \resumeSubheading
+%         {Class Representative}{Feb. 2019 -- December 2024}{Department of Electrical and Computer Engineering, 18 Series}{RUET}
+
+%         \resumeSubheading
+%         {Treasurer}{Jan 2023 -- December 2024}{RUET Analytical Programming Lab (RAPL)}{RUET}
+
+%         \resumeSubheading
+%         {General Secretary}{June 2023 -- May 2024}{Astronomy and Science Society of RUET (ASSR)}{RUET}
+%         \resumeItemListStart
+%             \resumeItem{Organized several national and regional events, including Science Olympiads, project showcases, and Rubik’s Cube competitions.}
+%         \resumeItemListEnd
+
+%     \resumeSubHeadingListEnd
+
+
+%-------------------------------------------
+\end{document}
