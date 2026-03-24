@@ -77,7 +77,7 @@
 % TODO EBSERIES
 % sans serif sections
 \titleformat {\section}{
-    \bfseries \vspace{0pt} \raggedright \large % header section
+    \bfseries \vspace{-2pt} \raggedright \large % header section
 }{}{0em}{}[\color{light-grey} {\titlerule[2pt]} \vspace{-4pt}]
 
 % only for pdflatex
@@ -145,15 +145,8 @@
 \end{center}
 
 
-%-----------EDUCATION-----------
-\section {EDUCATION}
-  \resumeSubHeadingListStart
-    \resumeSubheading
-      {Rajshahi University of Engineering and Technology}{December 2024}
-      {B.Sc. in Electrical and Computer Engineering}{Rajshahi, Bangladesh}
-  \resumeSubHeadingListEnd
-
 %-----------EXPERIENCE-----------
+\vspace{3pt}
 \section{EXPERIENCE}
 \resumeSubHeadingListStart
   \resumeSubheading
@@ -169,68 +162,68 @@
 
 
     \resumeSubheading
-      {Problem Setting in Competitive Programming}{2021 -- Present}
-      {Problem Setter, Judge} {Hybrid}
+      {Competitive Programming Contests}{}
+      {Problem Setter, Judge} {}
       \vspace{-5pt}
       \resumeItemListStart
-      
-        \item Been judge and problem setter for national contests incl.
+
+        \item Been judge and problem setter for international and national contests including 
+        \href{https://www.codechef.com/users/rifatrraazz#:~:text=Problems%20Authored%20(2)}{\myuline{Codechef}},
         \href{https://toph.co/c/iut-11th-national-ict-fest-2024}{\myuline{IUT IUPC 2024}},
         \href{https://toph.co/c/15th-iiuc-inter-university-2023}{\myuline{IIUC IUPC 2023}},
-        \href{https://toph.co/c/ngpc-2021}{\myuline{NGPC 2021}}, 
+        \href{https://toph.co/c/ngpc-2021}{\myuline{NGPC 2021}},
         \href{https://toph.co/c/ada-lovelace-national-girls-2021}{\myuline{ALNGPC 2021}}.
-        % \item[--] \href{https://toph.co/c/tough-duo-april-2022}{Tough Duo, April 2022}
-        % \item[--] \href{https://toph.co/c/criterion-2022-round-17}{Criterion 2022 Round 17}
-        % \item[--] \href{https://toph.co/c/code-to-save-a-mother}{Code To Save A Mother}
+        \href{https://toph.co/c/tough-duo-april-2022}{\myuline{Tough Duo April 2022}},
+        \href{https://toph.co/c/criterion-2022-round-17}{\myuline{Criterion 2022 Round 17}}.
+        % \href{https://toph.co/c/code-to-save-a-mother}{Code To Save A Mother}
         % \end{itemize}
 
-        \item Authored total ten problems in 
-          \href{https://www.codechef.com/users/rifatrraazz#:~:text=Problems%20Authored%20(2)}{\myuline{Codechef}} and 
-          \href{https://toph.co/u/rifatrraazz/problems}{\myuline{Toph}}.
+        % \item Authored total ten problems in
+        %   \href{https://www.codechef.com/users/rifatrraazz#:~:text=Problems%20Authored%20(2)}{\myuline{Codechef}} and
+        %   \href{https://toph.co/u/rifatrraazz/problems}{\myuline{Toph}}.
       \resumeItemListEnd
 \resumeSubHeadingListEnd
 
 
-%-----------ACHIEVEMENTS-----------
-\section{ACHIEVEMENTS}
-  \vspace{5pt}
-  \resumeItemListStart
-    \item Honorable mention \textbf{ICPC Asia West Continent Final 2022 and 2023} %(\href{https://codedrills.io/contests/icpc-asia-west-continent-final-contest-2022/scoreboard}{\color{llink}47th})
-    
-    \item \textbf{9th} in \href{https://bapsoj.org/contests/icpc-dhaka-regional-site-2023/standings#:~:text=10-,RRR,-RAJSHAHI%20UNIVERSITY%20OF}{\myuline{ICPC Dhaka Regional 2023}}
-    
-    \item \textbf{20th} in \href{https://bapsoj.org/contests/ncpc-onsite-2023-hosted-by-ju/standings#:~:text=(34)-,20,RAJSHAHI%20UNIVERSITY%20OF%20ENGINEERING%20%26%20TECHNOLOGY,-6}{\myuline{NCPC 2023}}
-    
-    \item \textbf{2nd} in \href{https://toph.co/c/tough-dash-june-2023/standings#:~:text=2-,rifatrraazz,-15}{\myuline{Tough Dash, June 2023}}
-    
-    % \item Top \textbf{2\%} ($260/12,330$) in \href{https://www.facebook.com/codingcompetitions/hacker-cup/2022/certificate/322485148790895}{\myuline{Hacker Cup 2022 Round 1}}
-    
-    \item Codeforces Max Rating: \href{https://codeforces.com/profile/rifatrraazz}{\myuline{1661 (Expert)}}
-    
-    \resumeItem{Solved more than \textbf{2000} problems in different online judges}
-  \resumeItemListEnd
-
-
-
-
 %-----------PROJECTS-----------
 
-% \section{PROJECTS}
-%   \resumeSubHeadingListStart
-%     \resumeSubheading
-%       {\href{https://github.com/rifatr/RiShop}{\myuline{\textbf{E-commerce Platform}}}} {} {} {}
-%       \resumeItemListStart
-%         \vspace {-10pt}
-%         \resumeItem{Developed a full-stack e-commerce web application using \textbf{Angular} for the frontend and \textbf{Asp .NET Core (Entity Framework)} for the backend.}
-%       \resumeItemListEnd
+\section{PROJECTS}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {\textbf{GhuriAI} $|$ \small{NestJS, Gemini, OpenAI, Google Places, Routes, Prisma, PostgreSQL}} {} {} {}
+      \resumeItemListStart
+        \vspace {-10pt}
+        \resumeItem{Building an AI-powered travel planner that generates day-by-day itineraries with real places, photos, and travel times using \textbf{Gemini/GPT-4o} with Google Maps APIs. Features \textbf{JWT + OAuth} auth, subscription tiers, and smart place caching for cost optimization.}
+      \resumeItemListEnd
 
-%     \resumeSubheading
-%       {\href{https://github.com/rifatr/TreeExplorer}{\myuline{\textbf{Tree Explorer}}}} {} {} {}
-%       \resumeItemListStart
-%         \vspace {-10pt}
-%         \resumeItem{A React + TypeScript + Vite app that visualizes nested JSON as an expandable/collapsible tree. The UI uses Tailwind CSS and plain React components.}
-%       \resumeItemListEnd
-%   \resumeSubHeadingListEnd
+    \resumeSubheading
+      {\href{https://shorojontro-online.up.railway.app/}{\myuline{\textbf{Shorojontro}}} $|$ \small{React, Socket.IO, Express, Redis, TypeScript}} {} {} {}
+      \resumeItemListStart
+        \vspace {-10pt}
+        \resumeItem{Built a real-time multiplayer card game with \textbf{WebSocket} based gameplay, configurable bot opponents, and in-game chat.}
+      \resumeItemListEnd
+
+    % \resumeSubheading
+    %   {\href{https://github.com/rifatr/Murmur}{\myuline{\textbf{Murmur}}} $|$ \small{NestJS, React, TypeORM, MySQL}} {} {} {}
+    %   \resumeItemListStart
+    %     \vspace {-10pt}
+    %     \resumeItem{Developed a Twitter-like social platform with paginated timeline, follow system, like/unlike, and modular \textbf{RESTful API} with DTO patterns and relational integrity.}
+    %   \resumeItemListEnd
+
+    \resumeSubheading
+      {\href{https://github.com/rifatr/Budget}{\myuline{\textbf{ManiTrack}}} $|$ \small{Kotlin, , Vibe Coding, Jetpack Compose, Material 3}} {} {} {}
+      \resumeItemListStart
+        \vspace {-10pt}
+        \resumeItem{Android app with \textbf{MVVM} architecture, category-wise budget-expense tracking, JSON export/import, and home screen widget.}
+      \resumeItemListEnd
+
+    % \resumeSubheading
+    %   {\href{https://github.com/rifatr/RiShop}{\myuline{\textbf{E-commerce Platform}}} $|$ \small{Angular, ASP.NET Core, Entity Framework}} {} {} {}
+    %   \resumeItemListStart
+    %     \vspace {-10pt}
+    %     \resumeItem{Full-stack e-commerce web application with product management, cart system, and RESTful backend.}
+    %   \resumeItemListEnd
+  \resumeSubHeadingListEnd
 
 
 
@@ -239,12 +232,40 @@
 \section{TECHNICAL SKILLS}
  \begin{itemize}[leftmargin=0in, label={}]
     \small{\item{
-     \textbf{Languages:} { F\#, C\#, TypeScript, Javascript, Python, C++}\hspace{220pt} \\
-     \textbf{Frameworks:} { .NET Core, React Native, React, Angular, NestJS}\hspace{220pt} \\
-     \textbf{Tools:} { Git, MSSQL, PostgreSQL, Prisma, Docker, Azure DevOps, Postman, gRPC}\hspace{220pt} \\
+     \textbf{Languages:} { F\#, C\#, TypeScript, Javascript, C++}\hspace{220pt} \\
+     \textbf{Frameworks:} { .NET Core, NestJS, React Native, React}\hspace{220pt} \\
+     \textbf{Tools:} { Git, MSSQL, PostgreSQL, Prisma, Redis, Docker, Azure DevOps, Postman, gRPC}\hspace{220pt} \\
     }}
  \end{itemize}
 
+
+%-----------ACHIEVEMENTS-----------
+\section{ACHIEVEMENTS}
+  % \vspace{5pt}
+  \begin{itemize} [leftmargin=0.1in]
+    \item Two times participated in \textbf{ICPC Asia West Continent Final 2022 and 2023} %(\href{https://codedrills.io/contests/icpc-asia-west-continent-final-contest-2022/scoreboard}{\color{llink}47th})
+
+    \item \textbf{9th} in \href{https://bapsoj.org/contests/icpc-dhaka-regional-site-2023/standings#:~:text=10-,RRR,-RAJSHAHI%20UNIVERSITY%20OF}{\myuline{ICPC Dhaka Regional 2023}}
+
+    % \item \textbf{20th} in \href{https://bapsoj.org/contests/ncpc-onsite-2023-hosted-by-ju/standings#:~:text=(34)-,20,RAJSHAHI%20UNIVERSITY%20OF%20ENGINEERING%20%26%20TECHNOLOGY,-6}{\myuline{NCPC 2023}}
+
+    % \item \textbf{2nd} in \href{https://toph.co/c/tough-dash-june-2023/standings#:~:text=2-,rifatrraazz,-15}{\myuline{Tough Dash, June 2023}}
+
+    % \item Top \textbf{2\%} ($260/12,330$) in \href{https://www.facebook.com/codingcompetitions/hacker-cup/2022/certificate/322485148790895}{\myuline{Hacker Cup 2022 Round 1}}
+
+    \item Codeforces Max Rating: \href{https://codeforces.com/profile/rifatrraazz}{\myuline{1661 (Expert)}}
+
+    \item Solved more than \textbf{2000} problems in different online judges
+  \end{itemize}
+
+
+%-----------EDUCATION-----------
+\section {EDUCATION}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Rajshahi University of Engineering and Technology}{December 2024}
+      {B.Sc. in Electrical and Computer Engineering}{Rajshahi, Bangladesh}
+  \resumeSubHeadingListEnd
 
 
 % ----------Voluntary Works------------------
@@ -253,14 +274,14 @@
         \resumeSubheading
         {Class Representative}{Feb. 2019 -- December 2024}{Department of Electrical and Computer Engineering, 18 Series}{RUET}
 
-        \resumeSubheading
-        {Treasurer}{Jan 2023 -- December 2024}{RUET Analytical Programming Lab (RAPL)}{RUET}
+        % \resumeSubheading
+        % {Treasurer}{Jan 2023 -- December 2024}{RUET Analytical Programming Lab (RAPL)}{RUET}
 
-        \resumeSubheading
-        {General Secretary}{June 2023 -- May 2024}{Astronomy and Science Society of RUET (ASSR)}{RUET}
-        \resumeItemListStart
-            \resumeItem{Organized several national and regional events, including Science Olympiads, project showcases, and Rubik’s Cube competitions.}
-        \resumeItemListEnd
+        % \resumeSubheading
+        % {General Secretary}{June 2023 -- May 2024}{Astronomy and Science Society of RUET (ASSR)}{RUET}
+        % \resumeItemListStart
+        %     \resumeItem{Organized several national and regional events, including Science Olympiads, project showcases, and Rubik’s Cube competitions.}
+        % \resumeItemListEnd
 
     \resumeSubHeadingListEnd
 
