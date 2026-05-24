@@ -152,12 +152,12 @@
   \resumeSubheading
     {Chaldal Engineering}{June 2024 -- Present}{Software Engineer}{Dhaka, Bangladesh}
     \resumeItemListStart
-      \resumeItem{Delivered full-stack features using \textbf{F\#, .NET Core, React Native}, Fable, ReactXP, React Native, and Azure DevOps CI/CD.}
-      \resumeItem{Developed core services of \textbf{ChaldalPay}, including QR payments, e-KYC verification, dispute flows, admin features like dispute tools, bulk QR generation, wallet control, etc.}
-      \resumeItem{Implemented facial verification using \textbf{Amazon Rekognition} and \textbf{DeepFace}, and integrated Election Commission API for national ID validation.}
-      \resumeItem{Contributed to passing the \textbf{Bangladesh Bank audit} for the MFS app; resolved VAPT issues (domain whitelisting, blocking man-in-middle attack) for PCI-DSS compliance.}
-      \resumeItem{Built secure multi-account bKash wallet binding logic for Chaldal and Cookups, supporting account switching and 1000+ daily transactions.}
-      \resumeItem{Building a new \textbf{Payment Gateway} under ChaldalPay with gRPC services and protobuf contracts for merchant payments.}
+      \resumeItem{Developed backend services for the \textbf{ChaldalPay} MFS platform in \textbf{F\#, .NET Core, and MSSQL}, with React Native (Fable/ReactXP) clients and Azure DevOps CI/CD pipelines.}
+      \resumeItem{Built core ChaldalPay services like QR payments, dispute resolution, wallet operations, bulk QR generation, and e-KYC, with each flow driven by a \textbf{state machine} (e.g. disputes: \textit{opened, under-review, resolved/rejected}) so transitions remain logged and replayable for audit.}
+      \resumeItem{Integrated multiple external systems through a shared HTTP client with retry and timeout handling: \textbf{Bangladesh EC NID} for identity verification, \textbf{CyberSource} for card payments, and \textbf{Amazon Rekognition} + \textbf{DeepFace} for facial matching.}
+      \resumeItem{Designed the schema and implemented \textbf{multi-account bKash binding} across Chaldal and Cookups: each user retains a full bind/unbind history with exactly one account active at a time, supporting 1000+ daily transactions.}
+      \resumeItem{Developing a merchant \textbf{Payment Gateway} under ChaldalPay using \textbf{gRPC and protobuf} contracts between services.}
+      \resumeItem{Contributed to passing the \textbf{Bangladesh Bank audit} for the MFS app; resolved \textbf{VAPT} findings (domain whitelisting, MITM hardening) toward \textbf{PCI-DSS} compliance.}
     \resumeItemListEnd
 
 
@@ -166,15 +166,14 @@
       {Problem Setter, Judge} {}
       \vspace{-5pt}
       \resumeItemListStart
-
-        \item Been judge and problem setter for international and national contests including 
-        \href{https://www.codechef.com/users/rifatrraazz#:~:text=Problems%20Authored%20(2)}{\myuline{Codechef}},
-        \href{https://toph.co/c/iut-11th-national-ict-fest-2024}{\myuline{IUT IUPC 2024}},
-        \href{https://toph.co/c/15th-iiuc-inter-university-2023}{\myuline{IIUC IUPC 2023}},
-        \href{https://toph.co/c/ngpc-2021}{\myuline{NGPC 2021}},
-        \href{https://toph.co/c/ada-lovelace-national-girls-2021}{\myuline{ALNGPC 2021}},
-        \href{https://toph.co/c/tough-duo-april-2022}{\myuline{Tough Duo April 2022}},
-        \href{https://toph.co/c/criterion-2022-round-17}{\myuline{Criterion 2022 Round 17}}.
+        \resumeItem{Been judge and problem setter for international and national contests including 
+          \href{https://www.codechef.com/users/rifatrraazz}{\myuline{Codechef}},
+          \href{https://toph.co/c/iut-11th-national-ict-fest-2024}{\myuline{IUT IUPC 2024}},
+          \href{https://toph.co/c/15th-iiuc-inter-university-2023}{\myuline{IIUC IUPC 2023}},
+          \href{https://toph.co/c/ngpc-2021}{\myuline{NGPC 2021}},
+          \href{https://toph.co/c/ada-lovelace-national-girls-2021}{\myuline{ALNGPC 2021}},
+          \href{https://toph.co/c/tough-duo-april-2022}{\myuline{Tough Duo April 2022}},
+          \href{https://toph.co/c/criterion-2022-round-17}{\myuline{Criterion 2022 Round 17}}}.
         % \href{https://toph.co/c/code-to-save-a-mother}{Code To Save A Mother}
         % \end{itemize}
 
@@ -187,14 +186,15 @@
 
 %-----------PROJECTS-----------
 
-\section{PROJECTS}
+\section{PROJECT}
   \resumeSubHeadingListStart
     \resumeSubheading
-      {\textbf{GhuriAI} $|$ \small{NestJS, React Native, Expo, Gemini, OpenAI, Google Places, Routes, Prisma, PostgreSQL}} {} {} {}
+      {\textbf{Escape AI} $|$ \small{NestJS, React Native, PostgreSQL, Prisma, OpenAI, Gemini, Google Maps}} {} {} {}
       \resumeItemListStart
         \vspace {-10pt}
-        \resumeItem{Building an AI-powered travel planner that generates day-by-day itineraries with real places, photos, and travel times using \textbf{Gemini/GPT-4o} with Google Maps APIs.}
-        \resumeItem{Features \textbf{JWT + OAuth} auth, subscription tiers, and smart place caching for cost optimization.}
+        \resumeItem{Travel planner that generates day-by-day itineraries with real places, photos, and travel times from a single trip request.}
+        \resumeItem{Two-step pipeline: \textbf{Gemini} returns the itinerary (place names and timings) as JSON against a fixed schema, then the backend resolves each place through \textbf{Google Places} and retrieves travel times via \textbf{Google Routes}; place\_id results are cached in \textbf{PostgreSQL} to avoid redundant API calls on repeat queries.}
+        \resumeItem{\textbf{JWT + OAuth} authentication, with subscription tiers and per-user rate limits and quotas enforced on the generation endpoint.}
       \resumeItemListEnd
 
     % \resumeSubheading
@@ -211,12 +211,12 @@
     %     \resumeItem{Developed a Twitter-like social platform with paginated timeline, follow system, like/unlike, and modular \textbf{RESTful API} with DTO patterns and relational integrity.}
     %   \resumeItemListEnd
 
-    \resumeSubheading
-      {\href{https://github.com/rifatr/Budget}{\myuline{\textbf{ManiTrack}}} $|$ \small{Kotlin, Vibe Coding, Jetpack Compose, Material 3}} {} {} {}
-      \resumeItemListStart
-        \vspace {-10pt}
-        \resumeItem{Android app with MVVM architecture, category-wise budget-expense tracking, JSON export/import, and home screen widget.}
-      \resumeItemListEnd
+    % \resumeSubheading
+    %   {\href{https://github.com/rifatr/Budget}{\myuline{\textbf{ManiTrack}}} $|$ \small{Kotlin, Vibe Coding, Jetpack Compose, Material 3}} {} {} {}
+    %   \resumeItemListStart
+    %     \vspace {-10pt}
+    %     \resumeItem{Android app with MVVM architecture, category-wise budget-expense tracking, JSON export/import, and home screen widget.}
+    %   \resumeItemListEnd
 
     % \resumeSubheading
     %   {\href{https://github.com/rifatr/RiShop}{\myuline{\textbf{E-commerce Platform}}} $|$ \small{Angular, ASP.NET Core, Entity Framework}} {} {} {}
@@ -234,7 +234,7 @@
  \begin{itemize}[leftmargin=0in, label={}]
     \small{\item{
      \textbf{Languages:} { F\#, C\#, TypeScript, Javascript, C++}\hspace{220pt} \\
-     \textbf{Frameworks:} { .NET Core, NestJS, React Native, React}\hspace{220pt} \\
+     \textbf{Frameworks:} { .NET Core, NestJS, React Native, React, Fable}\hspace{220pt} \\
      \textbf{Tools:} { Git, MSSQL, PostgreSQL, Prisma, Redis, Docker, Azure DevOps, Postman, gRPC}\hspace{220pt} \\
     }}
  \end{itemize}
@@ -244,19 +244,17 @@
 \section{ACHIEVEMENTS}
   % \vspace{5pt}
   \begin{itemize} [leftmargin=0.1in]
-    \item Two times participated in \textbf{ICPC Asia West Continent Final 2022 and 2023} %(\href{https://codedrills.io/contests/icpc-asia-west-continent-final-contest-2022/scoreboard}{\color{llink}47th})
+    \resumeItem{Two times participated in \textbf{ICPC Asia West Continent Final 2022 and 2023}} %(\href{https://codedrills.io/contests/icpc-asia-west-continent-final-contest-2022/scoreboard}{\color{llink}47th})
 
-    \item \textbf{9th} in \href{https://bapsoj.org/contests/icpc-dhaka-regional-site-2023/standings#:~:text=10-,RRR,-RAJSHAHI%20UNIVERSITY%20OF}{\myuline{ICPC Dhaka Regional 2023}}
+    \resumeItem{\textbf{9th} in \href{https://bapsoj.org/contests/icpc-dhaka-regional-site-2023/standings}{\myuline{ICPC Dhaka Regional 2023}} and \textbf{20th} in \href{https://bapsoj.org/contests/ncpc-onsite-2023-hosted-by-ju/standings}{\myuline{NCPC 2023}}}
 
-    % \item \textbf{20th} in \href{https://bapsoj.org/contests/ncpc-onsite-2023-hosted-by-ju/standings#:~:text=(34)-,20,RAJSHAHI%20UNIVERSITY%20OF%20ENGINEERING%20%26%20TECHNOLOGY,-6}{\myuline{NCPC 2023}}
+    % \resumeItem{\textbf{2nd} in \href{https://toph.co/c/tough-dash-june-2023/standings#:~:text=2-,rifatrraazz,-15}{\myuline{Tough Dash, June 2023}}
 
-    % \item \textbf{2nd} in \href{https://toph.co/c/tough-dash-june-2023/standings#:~:text=2-,rifatrraazz,-15}{\myuline{Tough Dash, June 2023}}
+    % \resumeItem{Top \textbf{2\%} ($260/12,330$) in \href{https://www.facebook.com/codingcompetitions/hacker-cup/2022/certificate/322485148790895}{\myuline{Hacker Cup 2022 Round 1}}
 
-    % \item Top \textbf{2\%} ($260/12,330$) in \href{https://www.facebook.com/codingcompetitions/hacker-cup/2022/certificate/322485148790895}{\myuline{Hacker Cup 2022 Round 1}}
+    \resumeItem{Codeforces Max Rating: \href{https://codeforces.com/profile/rifatrraazz}{\myuline{1661 (Expert)}}}
 
-    \item Codeforces Max Rating: \href{https://codeforces.com/profile/rifatrraazz}{\myuline{1661 (Expert)}}
-
-    % \item Solved more than \textbf{2000} problems in different online judges
+    % \resumeItem{Solved more than \textbf{2000} problems in different online judges
   \end{itemize}
 
 
