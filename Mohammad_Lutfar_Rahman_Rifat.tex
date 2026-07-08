@@ -152,7 +152,7 @@
   \resumeSubheading
     {Chaldal Engineering}{June 2024 -- Present}{Software Engineer}{Dhaka, Bangladesh}
     \resumeItemListStart
-      \resumeItem{Developed backend services for the \textbf{ChaldalPay} MFS platform in \textbf{F\#, .NET Core, and MSSQL}, with React Native (Fable/ReactXP) clients and Azure DevOps CI/CD pipelines.}
+      \resumeItem{Developed backend services for the \textbf{ChaldalPay} MFS platform in \textbf{F\#, C\#, .NET Core, and MSSQL}, with React Native clients and Azure DevOps CI/CD pipelines.}
       \resumeItem{Built core ChaldalPay services like QR payments, dispute resolution, wallet operations, bulk QR generation, and e-KYC, with each flow driven by a \textbf{state machine} (e.g. disputes: \textit{opened, under-review, resolved/rejected}) so transitions remain logged and replayable for audit.}
       \resumeItem{Integrated multiple external systems through a shared HTTP client with retry and timeout handling: \textbf{Bangladesh EC NID} for identity verification, \textbf{CyberSource} for card payments, and \textbf{Amazon Rekognition} + \textbf{DeepFace} for facial matching.}
       \resumeItem{Designed the schema and implemented \textbf{multi-account bKash binding} across Chaldal and Cookups: each user retains a full bind/unbind history with exactly one account active at a time, supporting 1000+ daily transactions.}
@@ -189,11 +189,11 @@
 \section{PROJECT}
   \resumeSubHeadingListStart
     \resumeSubheading
-      {\textbf{Escape AI} $|$ \small{NestJS, React Native, PostgreSQL, Prisma, OpenAI, Gemini, Google Maps}} {} {} {}
+      {\textbf{Escape AI} $|$ \small{NestJS, React Native, PostgreSQL, Prisma, OpenAI, Gemini, Google Maps, BullMQ, Redis}} {} {} {}
       \resumeItemListStart
         \vspace {-10pt}
-        \resumeItem{Travel planner that generates day-by-day itineraries with real places, photos, and travel times from a single trip request.}
-        \resumeItem{Two-step pipeline: \textbf{Gemini} returns the itinerary (place names and timings) as JSON against a fixed schema, then the backend resolves each place through \textbf{Google Places} and retrieves travel times via \textbf{Google Routes}; place\_id results are cached in \textbf{PostgreSQL} to avoid redundant API calls on repeat queries.}
+        \resumeItem{A travel planner that generates day-by-day itineraries with real places, photos, and travel times from a single trip request.}
+        \resumeItem{Two-step pipeline: \textbf{AI} returns the itinerary (place names and timings) as JSON against a fixed schema, then the backend resolves each place through \textbf{Google Places} and retrieves travel times via \textbf{Google Routes}; place\_id results are cached in \textbf{PostgreSQL} to avoid redundant API calls on repeat queries.}
         \resumeItem{\textbf{JWT + OAuth} authentication, with subscription tiers and per-user rate limits and quotas enforced on the generation endpoint.}
       \resumeItemListEnd
 
@@ -233,9 +233,9 @@
 \section{TECHNICAL SKILLS}
  \begin{itemize}[leftmargin=0in, label={}]
     \small{\item{
-     \textbf{Languages:} { F\#, C\#, TypeScript, Javascript, C++}\hspace{220pt} \\
-     \textbf{Frameworks:} { .NET Core, NestJS, React Native, React, Fable}\hspace{220pt} \\
-     \textbf{Tools:} { Git, MSSQL, PostgreSQL, Prisma, Redis, Docker, Azure DevOps, Postman, gRPC}\hspace{220pt} \\
+     \textbf{Languages:} { F\#, C\#, TypeScript, C++}\hspace{220pt} \\
+     \textbf{Frameworks:} { ASP.NET Core, NestJS, React Native}\hspace{220pt} \\
+     \textbf{Tools:} { Git, Claude Code, OpenAI and Gemini API, MSSQL, PostgreSQL, Prisma, Redis, Docker, Azure DevOps, gRPC}\hspace{220pt} \\
     }}
  \end{itemize}
 
