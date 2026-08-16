@@ -190,12 +190,23 @@
 \section{PROJECTS}
   \resumeSubHeadingListStart
     \resumeSubheading
-      {\textbf{GhuriAI} $|$ \small{NestJS, React Native, Expo, Gemini, OpenAI, Google APIs, Prisma, PostgreSQL}} {} {} {}
+      {\textbf{Porua AI} $|$ \small{Python, FastAPI, SQLAlchemy 2 (async), Alembic, PostgreSQL, Gemini, Pytest, Docker}} {} {} {}
       \resumeItemListStart
         \vspace {-10pt}
-        \resumeItem{Building an AI-powered travel planner that generates day-by-day itineraries with real places, photos, and travel times using \textbf{Gemini/GPT-4o} with Google Maps APIs.}
-        \resumeItem{Features \textbf{JWT + OAuth} auth, subscription tiers, and smart place caching for cost optimization.}
+        \resumeItem{Backend for an AI study tutor. A student opens a room per topic and uploads class notes as \texttt{.pdf}, \texttt{.docx} or \texttt{.pptx}, which the tutor answers from and cites.}
+        \resumeItem{The model can request tools but never runs anything itself: calls go through a fixed registry with \textbf{Pydantic}-validated arguments, and no tool takes a student id, so it cannot reach another student's data.}
+        \resumeItem{Every answer is checked before the student sees it, and a rejected one goes back to the model with the exact failure named. Attempts are stored as rows, failures included, so any answer traces back to the prompt version and retries behind it.}
+        \resumeItem{The maths tool checks expressions node by node against a syntax-tree allow-list rather than calling \texttt{eval}, which is escapable from an integer literal, and \textbf{SymPy} verifies worked solutions line by line.}
+        % \resumeItem{Wrote \textbf{290 tests} that need no API key, overriding the model behind a \textbf{FastAPI} dependency to cover parsing on real documents and validation on hand-written bad model output.}
       \resumeItemListEnd
+
+    % \resumeSubheading
+    %   {\textbf{GhuriAI} $|$ \small{NestJS, React Native, Expo, Gemini, OpenAI, Google APIs, Prisma, PostgreSQL}} {} {} {}
+    %   \resumeItemListStart
+    %     \vspace {-10pt}
+    %     \resumeItem{Building an AI-powered travel planner that generates day-by-day itineraries with real places, photos, and travel times using \textbf{Gemini/GPT-4o} with Google Maps APIs.}
+    %     \resumeItem{Features \textbf{JWT + OAuth} auth, subscription tiers, and smart place caching for cost optimization.}
+    %   \resumeItemListEnd
 
     % \resumeSubheading
     %   {\href{https://shorojontro-online.up.railway.app/}{\myuline{\textbf{Shorojontro}}} $|$ \small{React, Socket.IO, Express, Redis, TypeScript}} {} {} {}
@@ -211,12 +222,12 @@
     %     \resumeItem{Developed a Twitter-like social platform with paginated timeline, follow system, like/unlike, and modular \textbf{RESTful API} with DTO patterns and relational integrity.}
     %   \resumeItemListEnd
 
-    \resumeSubheading
-      {\href{https://github.com/rifatr/Budget}{\myuline{\textbf{ManiTrack}}} $|$ \small{Kotlin, Agent-driven Coding, Jetpack Compose, Material 3}} {} {} {}
-      \resumeItemListStart
-        \vspace {-10pt}
-        \resumeItem{Android app with MVVM architecture, category-wise budget-expense tracking, JSON export/import, and home screen widget.}
-      \resumeItemListEnd
+    % \resumeSubheading
+    %   {\href{https://github.com/rifatr/Budget}{\myuline{\textbf{ManiTrack}}} $|$ \small{Kotlin, Agent-driven Coding, Jetpack Compose, Material 3}} {} {} {}
+    %   \resumeItemListStart
+    %     \vspace {-10pt}
+    %     \resumeItem{Android app with MVVM architecture, category-wise budget-expense tracking, JSON export/import, and home screen widget.}
+    %   \resumeItemListEnd
 
     % \resumeSubheading
     %   {\href{https://github.com/rifatr/RiShop}{\myuline{\textbf{E-commerce Platform}}} $|$ \small{Angular, ASP.NET Core, Entity Framework}} {} {} {}
@@ -233,9 +244,9 @@
 \section{TECHNICAL SKILLS}
  \begin{itemize}[leftmargin=0in, label={}]
     \small{\item{
-     \textbf{Languages:} { F\#, C\#, TypeScript, C++}\hspace{220pt} \\
-     \textbf{Frameworks:} { ASP.NET Core, NestJS, React Native}\hspace{220pt} \\
-     \textbf{Tools:} { Git, Claude Code, GPT-GEMINI API, MSSQL, PostgreSQL, Prisma, Redis, Docker, Azure, gRPC}\hspace{220pt} \\
+     \textbf{Languages:} { Python, F\#, C\#, TypeScript, C++}\hspace{220pt} \\
+     \textbf{Frameworks:} { FastAPI, ASP.NET Core, NestJS, React Native}\hspace{220pt} \\
+     \textbf{Tools:} { Git, Claude Code, GPT-GEMINI API, MSSQL, PostgreSQL, SQLAlchemy, Prisma, Redis, Docker, Azure, gRPC}\hspace{220pt} \\
     }}
  \end{itemize}
 
@@ -243,7 +254,7 @@
 %-----------ACHIEVEMENTS-----------
 \section{ACHIEVEMENTS}
   % \vspace{5pt}
-  \begin{itemize} [leftmargin=0.1in]
+  \begin{itemize} [leftmargin=0.1in, itemsep=1pt, parsep=0pt, topsep=2pt]
     \item Two times participated in \textbf{ICPC Asia West Continent Final 2022 and 2023} %(\href{https://codedrills.io/contests/icpc-asia-west-continent-final-contest-2022/scoreboard}{\color{llink}47th})
 
     \item \textbf{9th} in \href{https://bapsoj.org/contests/icpc-dhaka-regional-site-2023/standings#:~:text=10-,RRR,-RAJSHAHI%20UNIVERSITY%20OF}{\myuline{ICPC Dhaka Regional 2023}}
