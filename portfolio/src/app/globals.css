@@ -274,6 +274,7 @@ a {
   letter-spacing: 0;
   white-space: pre;
   color: var(--ink);
+  text-align: left;
   -webkit-font-smoothing: none;
   text-rendering: optimizeSpeed;
 }

@@ -8,8 +8,6 @@ import Colophon from "@/components/Colophon";
 import Rise from "@/components/Rise";
 import { experience, featuredProject, intro, person } from "@/content/site";
 
-// this is ris comment
-
 export default function Home() {
   return (
     <div id="top" className="mx-auto w-full max-w-[70rem] px-5 sm:px-8 lg:px-12">
@@ -23,9 +21,9 @@ export default function Home() {
       <Masthead />
 
       {/* Lede */}
-      <section className="mt-24 sm:mt-32">
+      <section className="mt-16 sm:mt-24">
         <Rise>
-          <p className="font-display impress text-center text-[clamp(1.7rem,3.8vw,2.4rem)] leading-[1.38] max-w-[26ch] mx-auto text-balance">
+          <p className="font-display impress text-center text-[clamp(1.7rem,3.8vw,2.4rem)] leading-[1.38] max-w-[52ch] mx-auto text-balance">
             {person.lede}
           </p>
           <div className="flex items-center justify-center gap-4 mt-10 mb-12">

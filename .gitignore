@@ -34,3 +34,16 @@
 
 *.dvi
 *.ps
+
+############################################
+## PORTFOLIO (Next.js)
+############################################
+
+node_modules/
+.next/
+out/
+.vercel
+next-env.d.ts
+.turbo/
+# Generated at build time by scripts/sync-resume.mjs
+portfolio/public/resume.pdf

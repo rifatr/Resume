@@ -16,7 +16,6 @@ import { person } from "@/content/site";
  * negative, so the glyphs are re-mapped there rather than recoloured.
  */
 
-const RAW = readFileSync(join(process.cwd(), "public/rifat-ascii.txt"), "utf8");
 
 /**
  * Darkest to lightest, matching the ramp the source art was generated with.
@@ -41,14 +40,15 @@ function invert(art: string): string {
   });
 }
 
-const LIGHT = trim(RAW);
-const DARK = invert(LIGHT);
-
 export default function AsciiPortrait({
   className = "",
 }: {
   className?: string;
 }) {
+  const RAW = readFileSync(join(process.cwd(), "public/rifat-ascii.txt"), "utf8");
+  const LIGHT = trim(RAW);
+  const DARK = invert(LIGHT);
+
   return (
     <div
       role="img"

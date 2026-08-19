@@ -35,9 +35,9 @@ export default function Masthead() {
         <AsciiPortrait className="w-[248px] sm:w-[330px]" />
 
         <h1 className="font-display impress font-semibold leading-[0.95] text-[clamp(2.7rem,9vw,5.6rem)] mt-12">
-          Mohammad&nbsp;Lutfar
+          Mohammad&nbsp;Lutfar&nbsp;Rahman
           <br />
-          Rahman&nbsp;Rifat
+          Rifat
         </h1>
 
         <div className="flex items-center justify-center gap-4 mt-8 mb-6">
