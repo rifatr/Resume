@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Reduced seal: at favicon size the guilloche and the full MLR monogram
+       are illegible, so this keeps the roundel silhouette and one letter. -->
+  <rect width="64" height="64" fill="#f4efe6"/>
+  <circle cx="32" cy="32" r="29" fill="none" stroke="#1a1714" stroke-width="1.5"/>
+  <circle cx="32" cy="32" r="25.5" fill="none" stroke="#1a1714" stroke-width="3"/>
+  <circle cx="32" cy="32" r="20" fill="none" stroke="#a8853f" stroke-width="1"/>
+  <text x="32" y="33" text-anchor="middle" dominant-baseline="central"
+        font-family="Georgia, 'Times New Roman', serif" font-size="30"
+        font-weight="600" fill="#1a1714">R</text>
+  <path d="M 4.5 32 l 3.2 -3.2 l 3.2 3.2 l -3.2 3.2 Z" fill="#1a1714"/>
+  <path d="M 59.5 32 l -3.2 -3.2 l -3.2 3.2 l 3.2 3.2 Z" fill="#1a1714"/>
+</svg>

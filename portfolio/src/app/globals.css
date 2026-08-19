@@ -1,0 +1,369 @@
+@import "tailwindcss";
+
+/* ───────────────────────────────────────────────────────────────
+   PALETTE
+   Every colour lives here as a raw custom property so the night
+   edition is a token swap, never a per-component override.
+   ─────────────────────────────────────────────────────────────── */
+
+:root {
+  --paper: #f4efe6;
+  --paper-deep: #ebe4d7;
+  --ink: #1a1714;
+  --ink-faded: #5c534a;
+  --oxblood: #6e1f14;
+  --brass: #a8853f;
+  --rule: #c9bfae;
+  --rule-strong: #a89b86;
+
+  /* Declared here as well as in @theme: `@theme inline` only inlines values
+     into generated utilities, it does not emit the custom properties, so
+     plain `font-family: var(--font-body)` would resolve to nothing. */
+  --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-body: var(--font-garamond), "EB Garamond", Georgia, serif;
+  --font-mono: var(--font-fira), "Fira Mono", ui-monospace, monospace;
+
+  --grain-opacity: 0.34;
+  --impress-light: rgba(255, 255, 255, 0.55);
+  --impress-dark: rgba(26, 23, 20, 0.14);
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #14110e;
+    --paper-deep: #1c1815;
+    --ink: #e8e0d2;
+    --ink-faded: #a79c8b;
+    --oxblood: #d0685a;
+    --brass: #d4af5c;
+    --rule: #3a332b;
+    --rule-strong: #574d40;
+
+    --grain-opacity: 0.2;
+    --impress-light: rgba(255, 255, 255, 0.06);
+    --impress-dark: rgba(0, 0, 0, 0.5);
+
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --paper: #14110e;
+  --paper-deep: #1c1815;
+  --ink: #e8e0d2;
+  --ink-faded: #a79c8b;
+  --oxblood: #d0685a;
+  --brass: #d4af5c;
+  --rule: #3a332b;
+  --rule-strong: #574d40;
+
+  --grain-opacity: 0.2;
+  --impress-light: rgba(255, 255, 255, 0.06);
+  --impress-dark: rgba(0, 0, 0, 0.5);
+
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-deep: var(--paper-deep);
+  --color-ink: var(--ink);
+  --color-ink-faded: var(--ink-faded);
+  --color-oxblood: var(--oxblood);
+  --color-brass: var(--brass);
+  --color-rule: var(--rule);
+  --color-rule-strong: var(--rule-strong);
+
+  --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-body: var(--font-garamond), "EB Garamond", Georgia, serif;
+  --font-mono: var(--font-fira), "Fira Mono", ui-monospace, monospace;
+}
+
+/* ───────────────────────────────────────────────────────────────
+   BASE
+   ─────────────────────────────────────────────────────────────── */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  line-height: 1.68;
+  font-feature-settings: "onum" 1, "kern" 1, "liga" 1;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: var(--oxblood);
+  color: var(--paper);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--oxblood);
+  outline-offset: 3px;
+}
+
+/* ───────────────────────────────────────────────────────────────
+   PAPER GRAIN
+   Fractal noise over the whole page, plus a faint vignette, so the
+   ground reads as laid paper rather than flat #F4EFE6.
+   ─────────────────────────────────────────────────────────────── */
+
+.paper-grain::before,
+.paper-grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+}
+
+.paper-grain::before {
+  opacity: var(--grain-opacity);
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='0.42'/%3E%3C/svg%3E");
+}
+
+:root[data-theme="dark"] .paper-grain::before,
+:root:not([data-theme="light"]) .paper-grain::before {
+  mix-blend-mode: multiply;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .paper-grain::before {
+    mix-blend-mode: screen;
+  }
+}
+
+:root[data-theme="dark"] .paper-grain::before {
+  mix-blend-mode: screen;
+}
+
+:root[data-theme="light"] .paper-grain::before {
+  mix-blend-mode: multiply;
+}
+
+.paper-grain::after {
+  background: radial-gradient(
+    ellipse 130% 100% at 50% 45%,
+    transparent 55%,
+    color-mix(in srgb, var(--ink) 11%, transparent) 100%
+  );
+}
+
+/* ───────────────────────────────────────────────────────────────
+   LETTERPRESS TYPOGRAPHY
+   ─────────────────────────────────────────────────────────────── */
+
+/* Fakes the debossed bite of type pressed into paper: a hairline
+   highlight below, a soft shadow above. Kept near-invisible on
+   purpose: the moment you can see it, it looks cheap. */
+.impress {
+  text-shadow:
+    0 1px 0 var(--impress-light),
+    0 -1px 0 var(--impress-dark);
+}
+
+.smallcaps {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+}
+
+.tracked {
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.lining {
+  font-feature-settings: "lnum" 1, "tnum" 1;
+}
+
+/* Proper floated drop cap for the opening paragraph. */
+.dropcap::first-letter {
+  float: left;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 4.1em;
+  line-height: 0.82;
+  padding: 0.06em 0.09em 0 0;
+  margin-right: 0.04em;
+  color: var(--oxblood);
+}
+
+/* ───────────────────────────────────────────────────────────────
+   RULES
+
+   There are exactly two structural rules on this page, and they are
+   never stacked. Both run the full measure so their ends always line
+   up down the page; only the weight distinguishes them.
+
+     .rule-section  opens a section        2px, ink
+     .rule-row      separates list rows    1px, rule
+
+   2px means "a section starts here" and nothing else, so it appears
+   exactly once per section and always at the full measure. Rules that
+   divide rows stay at 1px and vary only by colour: --rule for an
+   ordinary row, --ink for a table's header.
+
+   Anything else that looks like a line is .rule-ornament: a short,
+   centred hairline that exists only to flank the brass lozenge. It is
+   decoration, never structure, and never sits next to a rule above.
+   ─────────────────────────────────────────────────────────────── */
+
+.rule-section {
+  height: 2px;
+  background-color: var(--ink);
+}
+
+.rule-row {
+  height: 1px;
+  background-color: var(--rule);
+}
+
+.rule-ornament {
+  height: 1px;
+  background-color: var(--rule);
+}
+
+/* The same 1px row rule, as a bottom border, for list items that already
+   establish their own box. Identical weight and colour to .rule-row. */
+.rule-row-after {
+  border-bottom: 1px solid var(--rule);
+}
+
+/* ───────────────────────────────────────────────────────────────
+   ASCII PORTRAIT
+
+   Sized by --ascii-cols so one line of art always spans the block
+   exactly. Fira Mono advances 0.6em per character, so the font size
+   that fits N columns into 100% is 100% / (N * 0.6).
+
+   --ascii-ratio squeezes the line box. The art was generated for a
+   terminal cell taller than it is wide; without this the face comes
+   out stretched.
+   ─────────────────────────────────────────────────────────────── */
+
+.ascii-portrait {
+  --ascii-cols: 100;
+  --ascii-ratio: 1;
+  position: relative;
+  margin-inline: auto;
+  container-type: inline-size;
+}
+
+.ascii-plate {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: calc(100cqw / (var(--ascii-cols) * 0.6));
+  line-height: var(--ascii-ratio);
+  letter-spacing: 0;
+  white-space: pre;
+  color: var(--ink);
+  -webkit-font-smoothing: none;
+  text-rendering: optimizeSpeed;
+}
+
+/* Only one plate is ever painted; the other is removed from the flow so it
+   cannot affect layout or be read out. */
+.ascii-plate--dark {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .ascii-plate--light {
+    display: none;
+  }
+  :root:not([data-theme="light"]) .ascii-plate--dark {
+    display: block;
+  }
+}
+
+:root[data-theme="dark"] .ascii-plate--light {
+  display: none;
+}
+:root[data-theme="dark"] .ascii-plate--dark {
+  display: block;
+}
+:root[data-theme="light"] .ascii-plate--light {
+  display: block;
+}
+:root[data-theme="light"] .ascii-plate--dark {
+  display: none;
+}
+
+/* ───────────────────────────────────────────────────────────────
+   MOTION
+   Entry animation only, and only when the reader allows it.
+   ─────────────────────────────────────────────────────────────── */
+
+.rise {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 900ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 900ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.rise.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .rise {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ───────────────────────────────────────────────────────────────
+   PRINT
+   It would be a poor letterpress site that printed badly.
+   ─────────────────────────────────────────────────────────────── */
+
+@media print {
+  .paper-grain::before,
+  .paper-grain::after,
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  .rise {
+    opacity: 1;
+    transform: none;
+  }
+}
