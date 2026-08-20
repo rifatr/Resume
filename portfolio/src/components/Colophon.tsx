@@ -51,13 +51,9 @@ export default function Colophon() {
           className="inline-block w-1.5 h-1.5 rotate-45 bg-brass"
         />
         <p className="smallcaps text-[0.92rem] text-ink-faded mt-5 leading-relaxed">
-          Set in Cormorant Garamond, EB Garamond and Fira Mono.
+          No bugs were harmed in the making of this portfolio. {"<"}EOF{"/>"}
           <br />
-          {person.location}
-          <span aria-hidden className="text-brass mx-2.5">
-            &middot;
-          </span>
-          2026
+          {new Date().getFullYear()}
         </p>
       </div>
     </footer>
