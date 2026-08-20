@@ -73,7 +73,7 @@ export default function StandingsSheet() {
           <h4 className="smallcaps text-[1.08rem] text-oxblood mt-12">
             Problems set &amp; judged
           </h4>
-          <p className="mt-2 text-ink/85 max-w-[58ch]">
+          <p className="mt-2 text-ink/85 max-w-[58ch] text-justify hyphens-auto">
             Problem setter and judge for national and international contests,
             including{" "}
             {contests.authored.map((item, i) => (

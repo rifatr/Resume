@@ -25,7 +25,7 @@ export default function WorkEntry({
             {entry.title}
           </h3>
 
-          <p className="mt-4 text-[1.3rem] leading-[1.6] text-ink/90 max-w-[58ch]">
+          <p className="mt-4 text-[1.3rem] leading-[1.6] text-ink/90 max-w-[58ch] text-justify hyphens-auto">
             {entry.summary}
           </p>
 
@@ -35,7 +35,7 @@ export default function WorkEntry({
                 <h4 className="smallcaps text-[1.08rem] text-oxblood">
                   {point.heading}
                 </h4>
-                <p className="mt-1.5 text-ink/85">{point.body}</p>
+                <p className="mt-1.5 text-ink/85 text-justify hyphens-auto">{point.body}</p>
               </li>
             ))}
           </ul>

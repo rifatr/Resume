@@ -42,7 +42,7 @@ export default function Catalogue() {
                 </span>
               </div>
 
-              <p className="mt-2 text-ink/85 max-w-[58ch]">{item.blurb}</p>
+              <p className="mt-2 text-ink/85 max-w-[58ch] text-justify hyphens-auto">{item.blurb}</p>
               <p className="mt-1.5 font-mono text-[0.85rem] text-ink-faded">
                 {item.stack}
               </p>

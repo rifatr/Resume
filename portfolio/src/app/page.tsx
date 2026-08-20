@@ -33,7 +33,7 @@ export default function Home() {
           </div>
           <div className="max-w-[58ch] mx-auto">
             {intro.map((paragraph, i) => (
-              <p key={i} className={i === 0 ? "dropcap" : "mt-5 indent-8"}>
+              <p key={i} className={i === 0 ? "dropcap text-justify hyphens-auto" : "mt-5 indent-8 text-justify hyphens-auto"}>
                 {paragraph}
               </p>
             ))}
