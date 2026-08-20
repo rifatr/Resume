@@ -16,8 +16,8 @@ export default function WorkEntry({
           and fold above the prose on narrow ones. */}
       <div className="mt-8 grid gap-x-10 gap-y-4 lg:grid-cols-[12rem_minmax(0,1fr)]">
         <aside className="smallcaps text-[0.95rem] text-ink-faded leading-relaxed lg:text-right lg:pt-2">
-          <p>{entry.period}</p>
           <p className="mt-0.5">{entry.meta}</p>
+          <p>{entry.period}</p>
         </aside>
 
         <div className="min-w-0">
@@ -25,17 +25,19 @@ export default function WorkEntry({
             {entry.title}
           </h3>
 
-          <p className="mt-4 text-[1.3rem] leading-[1.6] text-ink/90 max-w-[58ch] text-justify hyphens-auto">
+          <p className="mt-4 text-[1.15rem] sm:text-[1.3rem] leading-[1.6] text-ink/90 prose-body text-justify hyphens-auto">
             {entry.summary}
           </p>
 
           <ul className="mt-10 space-y-8">
             {entry.points.map((point) => (
-              <li key={point.heading} className="max-w-[58ch]">
+              <li key={point.heading} className="prose-body">
                 <h4 className="smallcaps text-[1.08rem] text-oxblood">
                   {point.heading}
                 </h4>
-                <p className="mt-1.5 text-ink/85 text-justify hyphens-auto">{point.body}</p>
+                <p className="mt-1.5 text-ink/85 text-justify hyphens-auto">
+                  {point.body}
+                </p>
               </li>
             ))}
           </ul>

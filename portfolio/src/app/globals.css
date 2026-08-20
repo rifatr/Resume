@@ -100,6 +100,24 @@ body {
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  padding-inline: env(safe-area-inset-left) env(safe-area-inset-right);
+}
+
+@media (max-width: 639px) {
+  body {
+    font-size: 1.125rem;
+    line-height: 1.65;
+  }
+
+  .tracked {
+    letter-spacing: 0.14em;
+  }
+
+  .dropcap::first-letter {
+    font-size: 3.4em;
+    line-height: 0.78;
+    padding-right: 0.06em;
+  }
 }
 
 ::selection {
@@ -203,6 +221,17 @@ a {
   padding: 0.06em 0.09em 0 0;
   margin-right: 0.04em;
   color: var(--oxblood);
+}
+
+/* Readable prose measure: full width on phones, constrained on wider screens. */
+.prose-body {
+  max-width: none;
+}
+
+@media (min-width: 640px) {
+  .prose-body {
+    max-width: 58ch;
+  }
 }
 
 /* ───────────────────────────────────────────────────────────────

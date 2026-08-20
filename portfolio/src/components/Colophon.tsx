@@ -11,7 +11,7 @@ const contacts = [
 
 export default function Colophon() {
   return (
-    <footer id="contact" className="mt-24 sm:mt-32 scroll-mt-24">
+    <footer id="contact" className="mt-24 sm:mt-32 scroll-mt-20 sm:scroll-mt-24">
       <div className="rule-section" aria-hidden />
 
       <div className="text-center pt-14">
@@ -32,7 +32,7 @@ export default function Colophon() {
               {...(contact.href.startsWith("http")
                 ? { target: "_blank", rel: "noopener noreferrer" }
                 : {})}
-              className="flex items-baseline gap-3 group"
+              className="flex items-baseline gap-3 group min-h-[44px] py-1"
             >
               <span className="smallcaps text-[0.92rem] text-ink-faded w-28 shrink-0">
                 {contact.label}

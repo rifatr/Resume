@@ -36,7 +36,7 @@ export default function ThemeToggle() {
     <button
       type="button"
       onClick={toggle}
-      className="smallcaps text-ink-faded hover:text-oxblood transition-colors text-[0.78rem] cursor-pointer no-print"
+      className="smallcaps text-ink-faded hover:text-oxblood transition-colors text-[0.78rem] sm:text-[0.78rem] cursor-pointer no-print min-h-[44px] min-w-[44px] flex items-center justify-center"
       // Before hydration settles we do not know the edition, so stay generic.
       aria-label={
         edition ? `Switch to ${edition === "dark" ? "day" : "night"} edition` : "Switch edition"

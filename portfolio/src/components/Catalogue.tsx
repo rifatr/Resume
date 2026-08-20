@@ -21,7 +21,7 @@ export default function Catalogue() {
 
           return (
             <li key={item.name} className="pt-7">
-              <div className="flex items-baseline justify-between gap-6">
+              <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-6">
                 {item.href ? (
                   <a
                     href={item.href}
@@ -42,7 +42,7 @@ export default function Catalogue() {
                 </span>
               </div>
 
-              <p className="mt-2 text-ink/85 max-w-[58ch] text-justify hyphens-auto">{item.blurb}</p>
+              <p className="mt-2 text-ink/85 prose-body text-justify hyphens-auto">{item.blurb}</p>
               <p className="mt-1.5 font-mono text-[0.85rem] text-ink-faded">
                 {item.stack}
               </p>

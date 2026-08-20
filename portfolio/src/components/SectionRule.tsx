@@ -14,7 +14,7 @@ export default function SectionRule({
   id?: string;
 }) {
   return (
-    <header id={id} className="scroll-mt-24">
+    <header id={id} className="scroll-mt-20 sm:scroll-mt-24">
       <div className="flex items-baseline gap-5 sm:gap-7">
         <span
           aria-hidden

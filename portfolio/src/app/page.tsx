@@ -1,3 +1,4 @@
+import SiteHeader from "@/components/SiteHeader";
 import Masthead from "@/components/Masthead";
 import WorkEntry from "@/components/WorkEntry";
 import Catalogue from "@/components/Catalogue";
@@ -18,6 +19,7 @@ export default function Home() {
         Skip to content
       </a>
 
+      <SiteHeader />
       <Masthead />
 
       {/* Lede */}
@@ -31,9 +33,16 @@ export default function Home() {
             <span aria-hidden className="w-1.5 h-1.5 rotate-45 bg-brass shrink-0" />
             <span aria-hidden className="rule-ornament w-20" />
           </div>
-          <div className="max-w-[58ch] mx-auto">
+          <div className="prose-body mx-auto">
             {intro.map((paragraph, i) => (
-              <p key={i} className={i === 0 ? "dropcap text-justify hyphens-auto" : "mt-5 indent-8 text-justify hyphens-auto"}>
+              <p
+                key={i}
+                className={
+                  i === 0
+                    ? "dropcap text-justify hyphens-auto"
+                    : "mt-5 indent-8 text-justify hyphens-auto"
+                }
+              >
                 {paragraph}
               </p>
             ))}
