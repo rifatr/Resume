@@ -15,7 +15,7 @@ export default function WorkEntry({
       {/* Marginalia rail: period and place sit in the margin on wide screens
           and fold above the prose on narrow ones. */}
       <div className="mt-8 grid gap-x-10 gap-y-4 lg:grid-cols-[12rem_minmax(0,1fr)]">
-        <aside className="smallcaps text-[0.95rem] text-ink-faded leading-relaxed lg:text-right lg:pt-2">
+        <aside className="hidden lg:block smallcaps text-[0.95rem] text-ink-faded leading-relaxed text-right pt-2">
           <p className="mt-0.5">{entry.meta}</p>
           <p>{entry.period}</p>
         </aside>
