@@ -154,18 +154,17 @@ export const catalogue = [
     href: null,
   },
   {
-    // The Railway deployment has expired; linking it would 404.
     name: "Shorojontro",
     blurb: "Real-time multiplayer card game with bots and in-game chat",
     stack: "React · Socket.IO · Express · Redis · TypeScript",
-    status: "Offline",
-    href: null,
+    status: "Live",
+    href: "https://shorojontro.rifat.app/",
   },
   {
     name: "ManiTrack",
     blurb: "Android budget tracker with category budgets and a home-screen widget",
     stack: "Kotlin · Jetpack Compose · Material 3 · MVVM",
-    status: "Source",
+    status: "Source + Live",
     href: "https://github.com/rifatr/Budget",
   },
   {
