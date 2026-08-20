@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, EB_Garamond, Fira_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { person, links } from "@/content/site";
 import "./globals.css";
 
@@ -120,7 +122,11 @@ export default function RootLayout({
           <style>{`.rise { opacity: 1 !important; transform: none !important; }`}</style>
         </noscript>
       </head>
-      <body className="paper-grain">{children}</body>
+      <body className="paper-grain">
+        {children}
+        <Analytics />
+        <SpeedInsights />
+      </body>
     </html>
   );
 }
