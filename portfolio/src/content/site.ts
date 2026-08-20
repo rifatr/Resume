@@ -105,7 +105,7 @@ export const featuredProject: WorkEntry = {
   section: "Projects",
   title: "Porua AI",
   meta: "Personal project",
-  period: "Since 2025",
+  period: "Since 2026",
   summary: `The backend for an AI study tutor. A student opens a room per topic
     and uploads class notes as .pdf, .docx or .pptx; the tutor answers from them
     and cites what it used. The interesting part was not the model. It was
@@ -159,15 +159,6 @@ export const catalogue = [
     blurb: "Real-time multiplayer card game with bots and in-game chat",
     stack: "React · Socket.IO · Express · Redis · TypeScript",
     status: "Offline",
-    href: null,
-  },
-  {
-    // Not public under github.com/rifatr; the resume's link 404s.
-    name: "Murmur",
-    blurb:
-      "Social platform with a paginated timeline, follow graph, and modular REST API",
-    stack: "NestJS · React · TypeORM · MySQL",
-    status: "Private",
     href: null,
   },
   {
