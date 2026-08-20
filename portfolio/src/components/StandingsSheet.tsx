@@ -9,7 +9,7 @@ export default function StandingsSheet() {
       <SectionRule index="04" title="Achievements" id="achievements" />
 
       <div className="mt-8 grid gap-x-10 gap-y-4 lg:grid-cols-[12rem_minmax(0,1fr)]">
-        <aside className="smallcaps text-[0.95rem] text-ink-faded leading-relaxed lg:text-right lg:pt-2">
+        <aside className="hidden lg:block smallcaps text-[0.95rem] text-ink-faded leading-relaxed lg:text-right lg:pt-2">
           <p>{contests.period}</p>
           <p className="mt-0.5">{contests.role}</p>
         </aside>
