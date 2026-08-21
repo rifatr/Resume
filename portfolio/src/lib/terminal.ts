@@ -58,6 +58,8 @@ const sectionTargets: Record<string, string> = {
   top: "top",
 };
 
+const shellDirectories = ["about", "experience", "projects", "skills", "achievements", "education", "contact"];
+
 function lines(texts: string[], tone?: TerminalLine["tone"]): TerminalLine[] {
   return texts.map((text) => ({ text, tone }));
 }
@@ -129,6 +131,124 @@ const commands: Record<string, Command> = {
         { text: `${person.name} · ${person.role}`, tone: "accent" },
         { text: person.lede },
         { text: person.location, tone: "muted" },
+      ],
+    }),
+  },
+  whoami: {
+    usage: "whoami",
+    description: "Print the person behind this site",
+    run: () => ({
+      lines: [
+        { text: person.name, tone: "accent" },
+        { text: `${person.role} · ${person.location}` },
+      ],
+    }),
+  },
+  whoiam: {
+    usage: "whoiam",
+    description: "Alias for whoami",
+    run: () => commands.whoami.run([]),
+  },
+  pwd: {
+    usage: "pwd",
+    description: "Print the current directory",
+    run: () => ({ lines: [{ text: `/home/rifat/${person.domain}`, tone: "muted" }] }),
+  },
+  ls: {
+    usage: "ls [section]",
+    description: "List portfolio sections",
+    run: (args) => {
+      if (args[0] && !shellDirectories.includes(args[0].toLowerCase())) {
+        return { lines: lines([`ls: cannot access '${args[0]}': No such section`], "error") };
+      }
+      return {
+        lines: [
+          { text: "about/  experience/  projects/  skills/", tone: "accent" },
+          { text: "achievements/  education/  contact/  resume.pdf", tone: "accent" },
+        ],
+      };
+    },
+  },
+  cd: {
+    usage: "cd <section>",
+    description: "Navigate to a portfolio section",
+    run: (args) => {
+      const name = args[0]?.replace(/^#/, "").toLowerCase();
+      const target = sectionTargets[name];
+      if (!target) {
+        return {
+          lines: lines(
+            [`cd: no such section: ${args[0] ?? ""}`, `Try: ${shellDirectories.join(", ")}`],
+            "error",
+          ),
+        };
+      }
+      return {
+        lines: [{ text: `Opening /${name}...`, tone: "muted" }],
+        action: { type: "navigate", target },
+      };
+    },
+  },
+  echo: {
+    usage: "echo <text>",
+    description: "Print text to the terminal",
+    run: (args) => ({ lines: [{ text: args.join(" ") }] }),
+  },
+  cat: {
+    usage: "cat <file>",
+    description: "Read a portfolio file",
+    run: (args) => {
+      const file = args[0]?.toLowerCase();
+      if (file === "about" || file === "about.txt") {
+        return commands.about.run([]);
+      }
+      if (file === "readme" || file === "readme.md") {
+        return {
+          lines: [
+            { text: `${person.domain} · personal portfolio`, tone: "accent" },
+            { text: "A software engineer building payment systems and backend software." },
+            { text: "Try: projects, skills --top, experience, contact", tone: "muted" },
+          ],
+        };
+      }
+      return { lines: lines([`cat: ${args[0] ?? ""}: No such file`], "error") };
+    },
+  },
+  date: {
+    usage: "date",
+    description: "Print today’s date",
+    run: () => ({
+      lines: [{ text: new Intl.DateTimeFormat("en", { dateStyle: "full" }).format(new Date()), tone: "muted" }],
+    }),
+  },
+  uname: {
+    usage: "uname [-a]",
+    description: "Print system information",
+    run: (args) => ({
+      lines: [
+        {
+          text:
+            args.includes("-a")
+              ? "PortfolioOS rifat.app web 2026 Next.js arm64"
+              : "PortfolioOS",
+          tone: "muted",
+        },
+      ],
+    }),
+  },
+  neofetch: {
+    usage: "neofetch",
+    description: "Show a portfolio system summary",
+    run: () => ({
+      lines: [
+        { text: "        ___         rifat@app", tone: "accent" },
+        { text: "       / _ \\        ----------------", tone: "accent" },
+        { text: "      | (_) |       OS: PortfolioOS", tone: "accent" },
+        { text: "       \\___/", tone: "accent" },
+        { text: `                     Host: ${person.domain}` },
+        { text: `                     Role: ${person.role}` },
+        { text: `                     Projects: ${projects.length}` },
+        { text: "                     Stack: TypeScript · React · Next.js", tone: "muted" },
       ],
     }),
   },
