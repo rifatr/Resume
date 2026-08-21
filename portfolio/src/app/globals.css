@@ -135,137 +135,683 @@ a {
   outline-offset: 3px;
 }
 
-.terminal-dialog {
-  --terminal-bg: #101214;
-  --terminal-bar: #1b1d20;
-  --terminal-rule: #30343a;
-  --terminal-text: #d8dee9;
-  --terminal-muted: #8b949e;
-  --terminal-green: #7ee787;
-  --terminal-blue: #79c0ff;
-  --terminal-yellow: #f2cc60;
-  --terminal-red: #ff7b72;
-  --terminal-link: #c9a7ff;
-  position: relative;
+.vscode-dialog {
+  --vscode-bg: #1e1e1e;
+  --vscode-editor: #1e1e1e;
+  --vscode-side: #181818;
+  --vscode-activity: #181818;
+  --vscode-bar: #181818;
+  --vscode-tab: #2b2b2b;
+  --vscode-rule: #2b2b2b;
+  --vscode-text: #cccccc;
+  --vscode-muted: #8b8b8b;
+  --vscode-blue: #007acc;
+  --terminal-green: #4ec9b0;
+  --terminal-blue: #4fc1ff;
+  --terminal-yellow: #dcdcaa;
+  position: fixed;
+  inset: 3vh 2vw;
+  z-index: 70;
+  width: 96vw;
+  max-width: none;
+  height: 94dvh;
+  max-height: none;
+  margin: 0;
   overflow: hidden;
-  border: 1px solid var(--terminal-rule);
-  border-radius: 10px;
-  background: var(--terminal-bg);
-  color: var(--terminal-text);
+  border: 1px solid #333;
+  border-radius: 8px;
+  background: var(--vscode-bg);
+  color: var(--vscode-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+}
+
+.vscode-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-shell {
+  display: grid;
+  grid-template-rows: 35px minmax(0, 1fr) 22px;
+  height: 100%;
+}
+
+.vscode-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  padding-left: 11px;
+  background: var(--vscode-bar);
+  border-bottom: 1px solid var(--vscode-rule);
+  font-size: 12px;
+  user-select: none;
+}
+
+.vscode-mark {
+  color: #23a8f2;
   font-family: var(--font-mono);
+  font-weight: 700;
 }
 
-.terminal-dialog::backdrop {
-  background: color-mix(in srgb, var(--ink) 58%, transparent);
-  backdrop-filter: blur(3px);
+.vscode-menus {
+  display: flex;
+  gap: 16px;
+  color: #bcbcbc;
 }
 
-.terminal-titlebar {
-  position: relative;
-  min-height: 3rem;
-  background: var(--terminal-bar);
-  border-bottom: 1px solid var(--terminal-rule);
-}
-
-.terminal-window-title {
+.vscode-title {
   position: absolute;
   left: 50%;
+  max-width: 38%;
+  overflow: hidden;
   transform: translateX(-50%);
-  color: var(--terminal-muted);
+  color: #a5a5a5;
+  font-size: 12px;
+  font-weight: 400;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.terminal-light {
-  display: block;
-  width: 0.72rem;
-  height: 0.72rem;
-  border-radius: 999px;
-}
-
-.terminal-light--red {
-  background: var(--terminal-red);
-}
-
-.terminal-light--yellow {
-  background: var(--terminal-yellow);
-}
-
-.terminal-light--green {
-  background: var(--terminal-green);
-}
-
-.terminal-close {
+.vscode-window-actions {
+  display: flex;
+  align-items: stretch;
+  align-self: stretch;
   margin-left: auto;
-  color: var(--terminal-muted);
 }
 
-.terminal-close:hover {
-  color: var(--terminal-red);
+.vscode-window-actions span,
+.vscode-window-actions button {
+  display: grid;
+  width: 46px;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: #c8c8c8;
+  font-size: 15px;
+}
+
+.vscode-window-actions button:hover {
+  background: #c42b1c;
+  color: white;
+}
+
+.vscode-workbench {
+  display: flex;
+  min-height: 0;
+}
+
+.vscode-activity {
+  display: flex;
+  width: 48px;
+  flex: 0 0 48px;
+  flex-direction: column;
+  background: var(--vscode-activity);
+  border-right: 1px solid var(--vscode-rule);
+}
+
+.vscode-activity button {
+  position: relative;
+  display: grid;
+  height: 48px;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: #858585;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.vscode-activity button:hover,
+.vscode-activity button.is-active {
+  color: #e7e7e7;
+}
+
+.vscode-activity button.is-active::before {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  background: #e7e7e7;
+  content: "";
+}
+
+.vscode-activity-spacer {
+  flex: 1;
+}
+
+.vscode-explorer {
+  width: 220px;
+  flex: 0 0 220px;
+  overflow: hidden;
+  background: var(--vscode-side);
+  border-right: 1px solid var(--vscode-rule);
+  font-size: 12px;
+}
+
+.vscode-sidebar-title {
+  height: 35px;
+  padding: 11px 20px;
+  color: #bbbbbb;
+}
+
+.vscode-tree-heading {
+  display: flex;
+  align-items: center;
+  height: 22px;
+  gap: 4px;
+  padding: 0 8px;
+  background: #252526;
+  color: #dedede;
+  font-weight: 700;
+}
+
+.vscode-tree-heading.collapsed {
+  border-top: 1px solid var(--vscode-rule);
+}
+
+.vscode-tree {
+  padding: 4px 0 12px;
+}
+
+.vscode-tree button,
+.vscode-tree-file {
+  display: flex;
+  width: 100%;
+  height: 23px;
+  align-items: center;
+  gap: 7px;
+  padding: 0 10px 0 20px;
+  border: 0;
+  background: transparent;
+  color: #cccccc;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.vscode-tree button:hover {
+  background: #2a2d2e;
+}
+
+.vscode-tree button span {
+  color: #519aba;
+}
+
+.vscode-main {
+  display: grid;
+  min-width: 0;
+  min-height: 0;
+  flex: 1;
+  grid-template-rows: minmax(10rem, 1fr) minmax(14rem, 42%);
+  background: var(--vscode-editor);
+}
+
+.vscode-editor {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.vscode-editor.is-hidden {
+  display: none;
+}
+
+.vscode-tabs {
+  display: flex;
+  height: 35px;
+  background: var(--vscode-side);
+}
+
+.vscode-tab {
+  display: flex;
+  min-width: 130px;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  border-right: 1px solid var(--vscode-rule);
+  color: #969696;
+  font-size: 12px;
+}
+
+.vscode-tab.is-active {
+  background: var(--vscode-editor);
+  color: #e7e7e7;
+  border-top: 1px solid var(--vscode-blue);
+}
+
+.vscode-ts { color: #519aba; }
+.vscode-md { color: #42a5f5; }
+
+.vscode-breadcrumbs {
+  height: 28px;
+  padding: 6px 14px;
+  color: #969696;
+  font-size: 12px;
+}
+
+.vscode-breadcrumbs span { padding: 0 5px; }
+
+.vscode-code {
+  overflow: auto;
+  height: calc(100% - 63px);
+  padding: 6px 0 30px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.vscode-code ol {
+  margin: 0;
+  padding-left: 54px;
+}
+
+.vscode-code li {
+  padding-left: 14px;
+  color: #d4d4d4;
+}
+
+.vscode-code li::marker { color: #6e7681; }
+.code-purple { color: #c586c0; }
+.code-blue { color: #9cdcfe; }
+.code-orange { color: #ce9178; }
+.code-muted { color: #6a9955; }
+
+.vscode-panel {
+  display: grid;
+  min-height: 0;
+  grid-template-rows: 35px minmax(0, 1fr);
+  border-top: 1px solid #3c3c3c;
+}
+
+.vscode-panelbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 12px;
+  background: var(--vscode-editor);
+}
+
+.vscode-panel-tabs,
+.vscode-panel-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  color: #969696;
+  font-size: 11px;
+}
+
+.vscode-panel-tabs span {
+  position: relative;
+  display: grid;
+  height: 35px;
+  place-items: center;
+  white-space: nowrap;
+}
+
+.vscode-panel-tabs span.is-active {
+  color: #e7e7e7;
+}
+
+.vscode-panel-tabs span.is-active::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: #e7e7e7;
+  content: "";
+}
+
+.vscode-panel-tabs small {
+  margin-left: 3px;
+  font-size: 9px;
+}
+
+.vscode-panel-actions {
+  gap: 4px;
+}
+
+.vscode-terminal-name {
+  padding-right: 8px;
+  color: #cccccc;
+}
+
+.vscode-panel-actions button {
+  width: 26px;
+  height: 26px;
+  border: 0;
+  background: transparent;
+  color: #cccccc;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.vscode-panel-actions button:hover {
+  background: #2a2d2e;
 }
 
 .terminal-output {
+  overflow: auto;
+  min-height: 0;
+  padding: 7px 16px 24px;
+  color: #d4d4d4;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.5;
   cursor: text;
-  scrollbar-color: var(--terminal-rule) var(--terminal-bg);
+  scrollbar-color: #555 #1e1e1e;
   scrollbar-width: thin;
 }
 
-.terminal-output .text-ink {
-  color: var(--terminal-text);
+.terminal-entry { margin-bottom: 10px; }
+.terminal-line { white-space: pre-wrap; overflow-wrap: anywhere; }
+.terminal-line--accent { color: #c586c0; }
+.terminal-line--muted { color: #8b949e; }
+.terminal-line--error { color: #f48771; }
+.terminal-prompt { color: var(--terminal-green); }
+.terminal-path { color: var(--terminal-blue); }
+.terminal-percent { color: var(--terminal-yellow); }
+
+.terminal-command-line {
+  display: flex;
+  align-items: center;
+  gap: 7px;
 }
 
-.terminal-output .text-ink-faded {
-  color: var(--terminal-muted);
-}
-
-.terminal-output .text-oxblood {
-  color: var(--terminal-link);
-}
-
-.terminal-output .text-oxblood:first-child,
-.terminal-output .text-oxblood:last-child {
-  color: var(--terminal-link);
-}
-
-.terminal-prompt {
-  color: var(--terminal-green);
-}
-
-.terminal-path {
-  color: var(--terminal-blue);
-}
-
-.terminal-percent {
-  color: var(--terminal-yellow);
-}
+.terminal-command-line label { flex: 0 0 auto; }
 
 .terminal-input {
+  min-width: 0;
+  flex: 1;
   border: 0;
   border-radius: 0;
   padding: 0;
+  background: transparent;
+  color: #d4d4d4;
   font: inherit;
-  color: var(--terminal-text);
   appearance: none;
-  caret-color: var(--terminal-green);
-}
-
-.terminal-input:focus {
+  caret-color: white;
   outline: none;
 }
 
-.terminal-input::selection {
-  background: #264f78;
-  color: #fff;
+.vscode-statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  background: #007acc;
+  color: white;
+  font-size: 11px;
+  user-select: none;
+}
+
+.vscode-statusbar div { display: flex; gap: 14px; }
+
+@media (max-width: 900px) {
+  .vscode-menus { display: none; }
+  .vscode-explorer { width: 185px; flex-basis: 185px; }
+  .vscode-panel-tabs span:not(.is-active) { display: none; }
+  .vscode-statusbar div:last-child span:not(:last-child) { display: none; }
 }
 
 @media (max-width: 639px) {
-  .terminal-dialog {
+  .vscode-dialog {
+    inset: 0;
     width: 100%;
-    max-width: none;
     height: 100dvh;
-    max-height: none;
     border: 0;
     border-radius: 0;
   }
+
+  .vscode-shell { grid-template-rows: 35px minmax(0, 1fr) 22px; }
+  .vscode-title { max-width: 62%; }
+  .vscode-mark { display: none; }
+  .vscode-window-actions span { display: none; }
+  .vscode-window-actions button { width: 42px; }
+  .vscode-activity,
+  .vscode-explorer,
+  .vscode-editor { display: none; }
+  .vscode-main { grid-template-rows: 1fr; }
+  .vscode-panel { grid-row: 1; }
+  .vscode-panelbar { padding-inline: 10px; }
+  .vscode-panel-tabs { gap: 0; }
+  .vscode-terminal-name { display: none; }
+  .terminal-output { padding-inline: 11px; font-size: 12px; }
+  .vscode-statusbar div:last-child { display: none; }
+}
+
+/* The terminal is a VS Code-style bottom panel, without simulating the rest
+   of the editor. The page remains the workbench behind this surface. */
+.terminal-panel {
+  --panel-bg: #1e1e1e;
+  --panel-header: #181818;
+  --panel-rule: #3c3c3c;
+  --panel-text: #d4d4d4;
+  --panel-muted: #858585;
+  --panel-accent: #4ec9b0;
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 70;
+  width: 100%;
+  max-width: none;
+  height: min(29rem, 58dvh);
+  max-height: none;
+  margin: 0;
+  overflow: hidden;
+  border: 0;
+  border-top: 1px solid var(--panel-rule);
+  border-radius: 0;
+  background: var(--panel-bg);
+  color: var(--panel-text);
+  font-family: var(--font-mono);
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.18);
+}
+
+:root[data-theme="light"] .terminal-panel {
+  --panel-bg: #ffffff;
+  --panel-header: #f3f3f3;
+  --panel-rule: #d4d4d4;
+  --panel-text: #333333;
+  --panel-muted: #616161;
+  --panel-accent: #00876a;
+  --terminal-green: #00876a;
+  --terminal-blue: #006ab1;
+  --terminal-yellow: #795e26;
+  background: var(--panel-bg);
+  color: var(--panel-text);
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.terminal-panel::backdrop {
+  background: transparent;
+}
+
+.terminal-panel-shell {
+  display: grid;
+  grid-template-rows: 3px 35px minmax(0, 1fr);
+  height: 100%;
+}
+
+.terminal-panel-divider {
+  position: relative;
+  background: var(--panel-header);
+  cursor: ns-resize;
+}
+
+.terminal-panel-divider::after {
+  position: absolute;
+  top: 1px;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: var(--panel-rule);
+  content: "";
+}
+
+.terminal-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-width: 0;
+  padding: 0 12px;
+  background: var(--panel-header);
+  border-bottom: 1px solid var(--panel-rule);
+}
+
+.terminal-panel-tabs,
+.terminal-panel-actions {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.terminal-panel-tabs {
+  gap: 19px;
+  height: 100%;
+}
+
+.terminal-panel-tabs button {
+  position: relative;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--panel-muted);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 11px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.terminal-panel-tabs button:hover,
+.terminal-panel-tabs button.is-active {
+  color: var(--panel-text);
+}
+
+.terminal-panel-tabs button.is-active::after {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  background: var(--panel-text);
+  content: "";
+}
+
+.terminal-panel-tabs small {
+  margin-left: 3px;
+  color: var(--panel-muted);
+  font-size: 9px;
+}
+
+.terminal-panel-actions {
+  gap: 3px;
+  color: var(--panel-muted);
+}
+
+.terminal-session {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-right: 8px;
+  color: var(--panel-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 11px;
+}
+
+.terminal-session-icon {
+  color: var(--panel-accent);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.terminal-panel-actions button {
+  display: grid;
+  width: 27px;
+  height: 27px;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: var(--panel-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.terminal-panel-actions button:hover {
+  background: color-mix(in srgb, var(--panel-text) 10%, transparent);
+}
+
+.terminal-panel .terminal-output {
+  overflow: auto;
+  min-height: 0;
+  padding: 9px 16px 28px;
+  color: var(--panel-text);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.5;
+  cursor: text;
+  scrollbar-color: var(--panel-muted) var(--panel-bg);
+  scrollbar-width: thin;
+}
+
+.terminal-panel .terminal-entry {
+  margin-bottom: 10px;
+}
+
+.terminal-panel .terminal-line {
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.terminal-panel .terminal-line--accent { color: #c586c0; }
+.terminal-panel .terminal-line--muted { color: var(--panel-muted); }
+.terminal-panel .terminal-line--error { color: #f48771; }
+
+:root[data-theme="light"] .terminal-panel .terminal-line--accent { color: #af00db; }
+:root[data-theme="light"] .terminal-panel .terminal-line--error { color: #a1260d; }
+
+.terminal-panel .terminal-command-line {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.terminal-panel .terminal-command-line label {
+  flex: 0 0 auto;
+}
+
+.terminal-panel .terminal-input {
+  min-width: 0;
+  flex: 1;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--panel-text);
+  font: inherit;
+  appearance: none;
+  caret-color: var(--panel-text);
+  outline: none;
+}
+
+@media (max-width: 900px) {
+  .terminal-panel-tabs { gap: 14px; }
+  .terminal-panel-tabs button:not(.is-active) { display: none; }
+}
+
+@media (max-width: 639px) {
+  .terminal-panel {
+    height: 100dvh;
+    border-top: 0;
+  }
+
+  .terminal-panel-shell { grid-template-rows: 3px 42px minmax(0, 1fr); }
+  .terminal-panel-header { padding-inline: 10px; }
+  .terminal-panel-tabs { gap: 0; }
+  .terminal-panel-tabs button { font-size: 12px; }
+  .terminal-session { display: none; }
+  .terminal-panel .terminal-output { padding-inline: 11px; font-size: 12px; }
 }
 
 /* ───────────────────────────────────────────────────────────────

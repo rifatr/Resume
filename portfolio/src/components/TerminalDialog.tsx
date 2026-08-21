@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { FormEvent, KeyboardEvent, MouseEvent } from "react";
+import type { FormEvent, KeyboardEvent } from "react";
 import { runCommand } from "@/lib/terminal";
 import type { TerminalLine } from "@/lib/terminal";
 import { setEdition } from "@/lib/theme";
@@ -36,8 +36,22 @@ export default function TerminalDialog() {
     if (output) output.scrollTop = output.scrollHeight;
   }, [transcript]);
 
+  useEffect(() => {
+    function closeOnEscape(event: globalThis.KeyboardEvent) {
+      if (event.key === "Escape" && dialogRef.current?.open) closeDialog();
+    }
+
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, []);
+
   function openDialog() {
-    dialogRef.current?.showModal();
+    if (dialogRef.current?.open) {
+      closeDialog();
+      return;
+    }
+
+    dialogRef.current?.show();
     requestAnimationFrame(() => inputRef.current?.focus());
   }
 
@@ -104,10 +118,6 @@ export default function TerminalDialog() {
     setInput(next === history.length ? "" : history[next]);
   }
 
-  function closeFromBackdrop(event: MouseEvent<HTMLDialogElement>) {
-    if (event.target === event.currentTarget) closeDialog();
-  }
-
   return (
     <>
       <button
@@ -122,76 +132,45 @@ export default function TerminalDialog() {
       <dialog
         ref={dialogRef}
         aria-labelledby="terminal-title"
-        className="terminal-dialog m-auto h-[min(42rem,calc(100dvh-2rem))] w-[min(52rem,calc(100%-2rem))] p-0 shadow-2xl"
-        onMouseDown={closeFromBackdrop}
+        className="terminal-panel p-0"
       >
-        <div className="flex h-full min-h-0 flex-col" onMouseDown={(event) => event.stopPropagation()}>
-          <div className="terminal-titlebar flex items-center justify-between gap-4 px-4 sm:px-5 py-3">
-            <div className="terminal-lights flex items-center gap-2" aria-hidden="true">
-              <span className="terminal-light terminal-light--red" />
-              <span className="terminal-light terminal-light--yellow" />
-              <span className="terminal-light terminal-light--green" />
+        <div className="terminal-panel-shell">
+          <div className="terminal-panel-divider" aria-hidden="true" />
+          <header className="terminal-panel-header">
+            <div className="terminal-panel-tabs" role="tablist" aria-label="Panel">
+              <button type="button" role="tab" aria-selected="false">PROBLEMS <small>0</small></button>
+              <button type="button" role="tab" aria-selected="false">OUTPUT</button>
+              <button type="button" role="tab" aria-selected="false">DEBUG CONSOLE</button>
+              <button id="terminal-title" type="button" role="tab" aria-selected="true" className="is-active">TERMINAL</button>
+              <button type="button" role="tab" aria-selected="false">PORTS</button>
             </div>
-            <h2 id="terminal-title" className="terminal-window-title font-mono text-[0.78rem]">
-              rifat@app ~ zsh
-            </h2>
-            <button
-              type="button"
-              onClick={closeDialog}
-              className="terminal-close font-mono text-[0.82rem] min-h-11 px-2 cursor-pointer"
-              aria-label="Close terminal"
-            >
-              [esc]
-            </button>
-          </div>
+            <div className="terminal-panel-actions">
+              <span className="terminal-session"><span className="terminal-session-icon" aria-hidden="true">›_</span> zsh</span>
+              <button type="button" onClick={() => inputRef.current?.focus()} title="New Terminal" aria-label="New terminal">＋</button>
+              <button type="button" onClick={() => setTranscript([])} title="Clear Terminal" aria-label="Clear terminal">⌫</button>
+              <button type="button" onClick={closeDialog} title="Close Panel" aria-label="Close terminal panel">×</button>
+            </div>
+          </header>
 
           <div
             ref={outputRef}
-            className="terminal-output min-h-0 flex-1 overflow-y-auto px-4 sm:px-6 py-5 font-mono text-[0.82rem] sm:text-[0.9rem] leading-relaxed"
+            className="terminal-output"
             aria-live="polite"
             onClick={() => inputRef.current?.focus()}
           >
             {transcript.map((entry) => (
-              <div key={entry.id} className="mb-3 last:mb-3">
+              <div key={entry.id} className="terminal-entry">
                 {entry.command ? (
-                  <p className="break-words">
-                    <><span className="terminal-prompt">rifat@portfolio</span> <span className="terminal-path">~</span> <span className="terminal-percent">%</span> {entry.command}</>
-                  </p>
+                  <p><span className="terminal-prompt">rifat@portfolio</span> <span className="terminal-path">~</span> <span className="terminal-percent">%</span> {entry.command}</p>
                 ) : null}
                 {entry.lines.map((line, index) => (
-                  <p
-                    key={`${entry.id}-${index}`}
-                    className={`whitespace-pre-wrap break-words ${
-                      line.tone === "accent"
-                        ? "text-oxblood"
-                        : line.tone === "muted"
-                          ? "text-ink-faded"
-                          : line.tone === "error"
-                            ? "text-oxblood"
-                            : "text-ink"
-                    }`}
-                  >
-                    {line.text}
-                  </p>
+                  <p key={`${entry.id}-${index}`} className={`terminal-line terminal-line--${line.tone ?? "normal"}`}>{line.text}</p>
                 ))}
               </div>
             ))}
-            <form onSubmit={submit} className="terminal-command-line flex items-center gap-2 font-mono text-[0.82rem] sm:text-[0.9rem]">
-              <label htmlFor="terminal-command" className="shrink-0" aria-label="Command">
-                <span className="terminal-prompt">rifat@portfolio</span> <span className="terminal-path">~</span> <span className="terminal-percent">%</span>
-              </label>
-              <input
-                ref={inputRef}
-                id="terminal-command"
-                value={input}
-                onChange={(event) => setInput(event.target.value)}
-                onKeyDown={navigateHistory}
-                autoComplete="off"
-                autoCapitalize="none"
-                spellCheck={false}
-                className="terminal-input min-w-0 flex-1 bg-transparent outline-none"
-                aria-label="Terminal command"
-              />
+            <form onSubmit={submit} className="terminal-command-line">
+              <label htmlFor="terminal-command"><span className="terminal-prompt">rifat@portfolio</span> <span className="terminal-path">~</span> <span className="terminal-percent">%</span></label>
+              <input ref={inputRef} id="terminal-command" value={input} onChange={(event) => setInput(event.target.value)} onKeyDown={navigateHistory} autoComplete="off" autoCapitalize="none" spellCheck={false} className="terminal-input" aria-label="Terminal command" />
             </form>
           </div>
         </div>
