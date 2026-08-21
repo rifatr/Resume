@@ -29,18 +29,45 @@ export default function WorkEntry({
             {entry.summary}
           </p>
 
-          <ul className="mt-10 space-y-8">
-            {entry.points.map((point) => (
-              <li key={point.heading} className="prose-body">
-                <h4 className="smallcaps text-[1.08rem] text-oxblood">
-                  {point.heading}
-                </h4>
-                <p className="mt-1.5 text-ink/85 text-justify hyphens-auto">
-                  {point.body}
-                </p>
-              </li>
-            ))}
-          </ul>
+          {entry.groups ? (
+            <div className="mt-10 space-y-12">
+              {entry.groups.map((group) => (
+                <section key={group.title} className="prose-body">
+                  <h4 className="font-display text-[1.65rem] sm:text-[1.85rem] leading-tight">
+                    {group.title}
+                  </h4>
+                  <p className="mt-2 text-ink-faded text-justify hyphens-auto">
+                    {group.summary}
+                  </p>
+                  <ul className="mt-7 space-y-8">
+                    {group.points.map((point) => (
+                      <li key={point.heading}>
+                        <h5 className="smallcaps text-[1.08rem] text-oxblood">
+                          {point.heading}
+                        </h5>
+                        <p className="mt-1.5 text-ink/85 text-justify hyphens-auto">
+                          {point.body}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ))}
+            </div>
+          ) : (
+            <ul className="mt-10 space-y-8">
+              {entry.points.map((point) => (
+                <li key={point.heading} className="prose-body">
+                  <h4 className="smallcaps text-[1.08rem] text-oxblood">
+                    {point.heading}
+                  </h4>
+                  <p className="mt-1.5 text-ink/85 text-justify hyphens-auto">
+                    {point.body}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          )}
 
           <ul className="mt-10 flex flex-wrap gap-x-3 gap-y-2.5">
             {entry.stack.map((tech) => (

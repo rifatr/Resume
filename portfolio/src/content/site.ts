@@ -51,17 +51,22 @@ export type WorkEntry = {
   summary: string;
   stack: readonly string[];
   points: readonly { heading: string; body: string }[];
+  groups?: readonly {
+    title: string;
+    summary: string;
+    points: readonly { heading: string; body: string }[];
+  }[];
 };
 
 export const experience: WorkEntry = {
   index: "01",
   section: "Experience",
-  title: "ChaldalPay",
-  meta: "Chaldal Engineering",
+  title: "Chaldal Engineering",
+  meta: "Software Engineer",
   period: "Since June 2024",
-  summary: `A mobile financial service operating under Bangladesh Bank
-    supervision. I work across its payment surface, from the wallet binding a
-    customer touches to the gRPC contracts merchants integrate against.`,
+  summary: `I build payment products across Chaldal and ChaldalPay, working from
+    customer-facing mobile flows to regulated financial services and
+    merchant-facing gRPC contracts.`,
   stack: [
     "C#",
     "F#",
@@ -71,31 +76,50 @@ export const experience: WorkEntry = {
     "React Native",
     "Azure DevOps",
   ],
-  points: [
+  points: [],
+  groups: [
     {
-      heading: "Multi-account wallet binding",
-      body: `Built the secure bKash binding system that lets a customer attach
-        several wallets to one account and pay with a single tap. It carries
-        upwards of a thousand transactions a day.`,
+      title: "Chaldal",
+      summary: `Payment integration for Chaldal's customer checkout experience.`,
+      points: [
+        {
+          heading: "Multi-account bKash wallet binding",
+          body: `Built the secure binding system that lets a customer attach
+            several bKash wallets to one Chaldal account and pay with a single
+            tap. It supports upwards of a thousand transactions a day.`,
+        },
+      ],
     },
     {
-      heading: "Identity, verified twice",
-      body: `Integrated Amazon Rekognition and DeepFace for face verification,
-        and the Election Commission API for national ID checks, so e-KYC clears
-        against a government record rather than a photograph alone.`,
-    },
-    {
-      heading: "Audit and compliance",
-      body: `Contributed to passing the Bangladesh Bank audit for the MFS app,
-        and closed VAPT findings for PCI-DSS: domain whitelisting, and blocking
-        a man-in-the-middle path.`,
-    },
-    {
-      heading: "Payment gateway",
-      body: `Currently building a merchant-facing payment gateway under
-        ChaldalPay on gRPC services with protobuf contracts. Alongside it: QR
-        payments, dispute flows, and the admin tooling behind them, covering
-        dispute resolution, bulk QR generation and wallet control.`,
+      title: "ChaldalPay",
+      summary: `A mobile financial service operating under Bangladesh Bank
+        supervision, spanning customer payments, compliance, operations and
+        merchant integrations.`,
+      points: [
+        {
+          heading: "Identity, verified twice",
+          body: `Integrated Amazon Rekognition and DeepFace for face verification,
+            and the Election Commission API for national ID checks, so e-KYC
+            clears against a government record rather than a photograph alone.`,
+        },
+        {
+          heading: "QR payments and dispute flows",
+          body: `Developed QR code payment and dispute workflows, together with
+            operational tooling for dispute resolution, bulk QR generation and
+            wallet control.`,
+        },
+        {
+          heading: "Audit and compliance",
+          body: `Contributed to passing the Bangladesh Bank audit for the MFS app,
+            and closed VAPT findings for PCI-DSS: domain whitelisting, and
+            blocking a man-in-the-middle path.`,
+        },
+        {
+          heading: "Payment gateway",
+          body: `Currently building a merchant-facing payment gateway on gRPC
+            services with protobuf contracts for secure merchant payments.`,
+        },
+      ],
     },
   ],
 };

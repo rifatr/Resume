@@ -293,6 +293,10 @@ const commands: Record<string, Command> = {
       lines: [
         { text: `${experience.title} · ${experience.meta}`, tone: "accent" },
         { text: experience.summary.replace(/\s+/g, " ").trim() },
+        ...(experience.groups ?? []).flatMap((group) => [
+          { text: group.title, tone: "accent" as const },
+          ...group.points.map((point) => ({ text: `  ${point.heading}: ${point.body.replace(/\s+/g, " ").trim()}` })),
+        ]),
         { text: experience.stack.join(" · "), tone: "muted" },
       ],
     }),
