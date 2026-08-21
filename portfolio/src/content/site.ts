@@ -43,8 +43,8 @@ export const intro = [
 ] as const;
 
 export type WorkEntry = {
-  index: string;
-  section: string;
+  index?: string;
+  section?: string;
   title: string;
   meta: string;
   period: string;
@@ -124,57 +124,92 @@ export const experience: WorkEntry = {
   ],
 };
 
-export const featuredProject: WorkEntry = {
-  index: "02",
-  section: "Projects",
-  title: "Porua AI",
-  meta: "Personal project",
-  period: "Since 2026",
-  summary: `The backend for an AI study tutor. A student opens a room per topic
-    and uploads class notes as .pdf, .docx or .pptx; the tutor answers from them
-    and cites what it used. The interesting part was not the model. It was
-    refusing to trust it.`,
-  stack: [
-    "Python",
-    "FastAPI",
-    "SQLAlchemy 2 (async)",
-    "Alembic",
-    "PostgreSQL",
-    "Gemini",
-    "Pytest",
-    "Docker",
-  ],
-  points: [
-    {
-      heading: "The model asks; it never acts",
-      body: `Tool calls go through a fixed registry with Pydantic-validated
-        arguments. No tool takes a student id, so there is no argument the model
-        could produce that reaches another student's data.`,
-    },
-    {
-      heading: "Nothing reaches the student unchecked",
-      body: `Every answer is validated first, and a rejected one goes back to the
-        model with the exact failure named. Attempts are stored as rows, failures
-        included, so any answer traces back to the prompt version and the retries
-        behind it.`,
-    },
-    {
-      heading: "Maths without eval",
-      body: `The maths tool walks each expression node by node against a
-        syntax-tree allow-list rather than calling eval, which is escapable from
-        something as small as an integer literal. SymPy then verifies worked
-        solutions line by line.`,
-    },
-  ],
-};
+export const featuredProjects: readonly WorkEntry[] = [
+  {
+    title: "GhuriAI",
+    meta: "Personal project",
+    period: "Since 2025",
+    summary: `An AI travel planner that builds detailed day-by-day itineraries
+      with real places, travel times and photos. The mobile client turns a trip
+      brief into an itinerary backed by Google Maps data.`,
+    stack: [
+      "NestJS",
+      "React Native",
+      "Expo",
+      "PostgreSQL",
+      "Prisma",
+      "Redis",
+      "BullMQ",
+      "Gemini",
+      "OpenAI",
+      "Google Maps APIs",
+    ],
+    points: [
+      {
+        heading: "Itineraries grounded in real places",
+        body: `The planner combines Gemini or GPT-4o-mini with Google Places,
+          Routes and Photos APIs to generate trips with real locations and travel
+          times rather than generic recommendations.`,
+      },
+      {
+        heading: "A complete product surface",
+        body: `Built authentication with email/password, Google OAuth and Apple
+          Sign-In, alongside trip generation, day and event regeneration, and
+          subscription tiers with quota controls.`,
+      },
+      {
+        heading: "Cost-aware AI integration",
+        body: `The system supports provider fallback and place caching so repeated
+          Google API requests are reduced while the generated itinerary stays
+          useful and consistent.`,
+      },
+    ],
+  },
+  {
+    title: "MediBuddy AI",
+    meta: "Personal project",
+    period: "Since 2026",
+    summary: `A mobile health organizer for medical records, medication reminders
+      and provider discovery. Prescription intelligence turns uploaded documents
+      into editable drafts, and only what a user confirms becomes a reminder.`,
+    stack: [
+      "TypeScript",
+      "NestJS",
+      "React Native",
+      "Expo",
+      "PostgreSQL",
+      "Prisma",
+      "Azurite",
+    ],
+    points: [
+      {
+        heading: "Confirm before scheduling",
+        body: `GPT-5.6 extracts medicines, dosage, duration and follow-up dates
+          into an editable draft. Device notifications are registered only after
+          the user confirms the extracted data.`,
+      },
+      {
+        heading: "Private medical records",
+        body: `Prescriptions and reports are stored in private per-user object
+          storage, with identity derived from a verified Firebase token rather
+          than request-body data.`,
+      },
+      {
+        heading: "Care Finder that refuses to guess",
+        body: `Provider discovery is grounded in Google Search, while symptom
+          input is explicitly refused instead of being turned into medical advice.`,
+      },
+    ],
+  },
+];
 
 export const catalogue = [
   {
-    name: "GhuriAI",
+    name: "Porua AI",
     blurb:
-      "AI travel planner that builds day-by-day itineraries with real places and travel times",
-    stack: "NestJS · Gemini · OpenAI · Google Places & Routes · Prisma",
-    status: "Private",
+      "AI study tutor that answers from uploaded class notes and cites its sources",
+    stack: "Python · FastAPI · SQLAlchemy · PostgreSQL · Gemini · Pytest · Docker",
+    status: "Personal",
     href: null,
   },
   {
@@ -201,13 +236,13 @@ export const catalogue = [
 ] as const;
 
 export const composition = [
-  { label: "Languages", items: "Python · F# · C# · TypeScript · C++" },
-  { label: "Frameworks", items: "FastAPI · ASP.NET Core · NestJS · React Native" },
+  { label: "Languages", items: "C# · F# · TypeScript · Python · C++" },
+  { label: "Frameworks", items: "ASP.NET Core · NestJS · FastAPI · React Native" },
   {
     label: "Data & Infra",
-    items: "PostgreSQL · MSSQL · SQLAlchemy · Prisma · Redis · Docker · Azure · gRPC",
+    items: "PostgreSQL · MSSQL ·  Prisma · Redis · Docker · SQLAlchemy ·Azure · gRPC",
   },
-  { label: "Tools", items: "Git · Claude Code · Gemini & GPT APIs" },
+  { label: "Tools", items: "Git · Claude Code · Gemini & OpenAI APIs" },
 ] as const;
 
 // A deliberately short terminal view. Edit this list without changing the
@@ -215,10 +250,10 @@ export const composition = [
 export const topSkills = [
   "Backend systems",
   "Payments",
-  "Python",
   "C#",
   "F#",
   ".NET",
+  "Python",
   "FastAPI",
   "gRPC",
 ] as const;

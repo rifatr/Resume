@@ -4,13 +4,17 @@ import SectionRule from "./SectionRule";
 export default function WorkEntry({
   entry,
   anchor,
+  showSectionRule = true,
 }: {
   entry: Entry;
-  anchor: string;
+  anchor?: string;
+  showSectionRule?: boolean;
 }) {
   return (
-    <article className="mt-20 sm:mt-28">
-      <SectionRule index={entry.index} title={entry.section} id={anchor} />
+    <article className={showSectionRule ? "mt-20 sm:mt-28" : "mt-8 sm:mt-10"}>
+      {showSectionRule && entry.index && entry.section ? (
+        <SectionRule index={entry.index} title={entry.section} id={anchor} />
+      ) : null}
 
       {/* Marginalia rail: period and place sit in the margin on wide screens
           and fold above the prose on narrow ones. */}
@@ -69,7 +73,7 @@ export default function WorkEntry({
             </ul>
           )}
 
-          <ul className="mt-10 flex flex-wrap gap-x-3 gap-y-2.5">
+          <ul className="prose-body mt-10 flex flex-wrap gap-x-3 gap-y-2.5">
             {entry.stack.map((tech) => (
               <li
                 key={tech}

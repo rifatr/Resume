@@ -2,7 +2,7 @@ import {
   catalogue,
   composition,
   experience,
-  featuredProject,
+  featuredProjects,
   links,
   person,
   topSkills,
@@ -32,13 +32,13 @@ type Command = {
 };
 
 const projects = [
-  {
-    name: featuredProject.title,
-    description: featuredProject.summary.replace(/\s+/g, " ").trim(),
-    stack: featuredProject.stack.join(" · "),
+  ...featuredProjects.map((project) => ({
+    name: project.title,
+    description: project.summary.replace(/\s+/g, " ").trim(),
+    stack: project.stack.join(" · "),
     href: null,
     status: "Featured",
-  },
+  })),
   ...catalogue.map((project) => ({
     name: project.name,
     description: project.blurb,

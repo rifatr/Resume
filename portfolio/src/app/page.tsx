@@ -7,7 +7,8 @@ import StandingsSheet from "@/components/StandingsSheet";
 import Education from "@/components/Education";
 import Colophon from "@/components/Colophon";
 import Rise from "@/components/Rise";
-import { experience, featuredProject, intro, person } from "@/content/site";
+import SectionRule from "@/components/SectionRule";
+import { experience, featuredProjects, intro, person } from "@/content/site";
 
 export default function Home() {
   return (
@@ -58,7 +59,10 @@ export default function Home() {
         </Rise>
 
         <Rise as="section">
-          <WorkEntry entry={featuredProject} anchor="projects" />
+          <SectionRule index="02" title="Projects" id="projects" />
+          {featuredProjects.map((project) => (
+            <WorkEntry key={project.title} entry={project} showSectionRule={false} />
+          ))}
           <Catalogue />
         </Rise>
 
