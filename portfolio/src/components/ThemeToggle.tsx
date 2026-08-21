@@ -1,34 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
-type Edition = "light" | "dark";
+import { useSyncExternalStore } from "react";
+import { getEdition, setEdition, subscribeToEdition } from "@/lib/theme";
 
 /**
  * Day / night edition switch. The document may already carry a data-theme from
  * the blocking script in layout.tsx, so read from the DOM rather than assuming.
  */
 export default function ThemeToggle() {
-  const [edition, setEdition] = useState<Edition | null>(null);
-
-  useEffect(() => {
-    const attr = document.documentElement.dataset.theme as Edition | undefined;
-    setEdition(
-      attr ??
-        (window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light"),
-    );
-  }, []);
+  const edition = useSyncExternalStore(subscribeToEdition, getEdition, () => null);
 
   function toggle() {
-    const next: Edition = edition === "dark" ? "light" : "dark";
-    document.documentElement.dataset.theme = next;
-    try {
-      localStorage.setItem("rifat-edition", next);
-    } catch {
-      // Private browsing; the choice simply will not persist.
-    }
+    const next = edition === "dark" ? "light" : "dark";
     setEdition(next);
   }
 

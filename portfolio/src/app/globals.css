@@ -135,6 +135,139 @@ a {
   outline-offset: 3px;
 }
 
+.terminal-dialog {
+  --terminal-bg: #101214;
+  --terminal-bar: #1b1d20;
+  --terminal-rule: #30343a;
+  --terminal-text: #d8dee9;
+  --terminal-muted: #8b949e;
+  --terminal-green: #7ee787;
+  --terminal-blue: #79c0ff;
+  --terminal-yellow: #f2cc60;
+  --terminal-red: #ff7b72;
+  --terminal-link: #c9a7ff;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--terminal-rule);
+  border-radius: 10px;
+  background: var(--terminal-bg);
+  color: var(--terminal-text);
+  font-family: var(--font-mono);
+}
+
+.terminal-dialog::backdrop {
+  background: color-mix(in srgb, var(--ink) 58%, transparent);
+  backdrop-filter: blur(3px);
+}
+
+.terminal-titlebar {
+  position: relative;
+  min-height: 3rem;
+  background: var(--terminal-bar);
+  border-bottom: 1px solid var(--terminal-rule);
+}
+
+.terminal-window-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--terminal-muted);
+  white-space: nowrap;
+}
+
+.terminal-light {
+  display: block;
+  width: 0.72rem;
+  height: 0.72rem;
+  border-radius: 999px;
+}
+
+.terminal-light--red {
+  background: var(--terminal-red);
+}
+
+.terminal-light--yellow {
+  background: var(--terminal-yellow);
+}
+
+.terminal-light--green {
+  background: var(--terminal-green);
+}
+
+.terminal-close {
+  margin-left: auto;
+  color: var(--terminal-muted);
+}
+
+.terminal-close:hover {
+  color: var(--terminal-red);
+}
+
+.terminal-output {
+  cursor: text;
+  scrollbar-color: var(--terminal-rule) var(--terminal-bg);
+  scrollbar-width: thin;
+}
+
+.terminal-output .text-ink {
+  color: var(--terminal-text);
+}
+
+.terminal-output .text-ink-faded {
+  color: var(--terminal-muted);
+}
+
+.terminal-output .text-oxblood {
+  color: var(--terminal-link);
+}
+
+.terminal-output .text-oxblood:first-child,
+.terminal-output .text-oxblood:last-child {
+  color: var(--terminal-link);
+}
+
+.terminal-prompt {
+  color: var(--terminal-green);
+}
+
+.terminal-path {
+  color: var(--terminal-blue);
+}
+
+.terminal-percent {
+  color: var(--terminal-yellow);
+}
+
+.terminal-input {
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  font: inherit;
+  color: var(--terminal-text);
+  appearance: none;
+  caret-color: var(--terminal-green);
+}
+
+.terminal-input:focus {
+  outline: none;
+}
+
+.terminal-input::selection {
+  background: #264f78;
+  color: #fff;
+}
+
+@media (max-width: 639px) {
+  .terminal-dialog {
+    width: 100%;
+    max-width: none;
+    height: 100dvh;
+    max-height: none;
+    border: 0;
+    border-radius: 0;
+  }
+}
+
 /* ───────────────────────────────────────────────────────────────
    PAPER GRAIN
    Fractal noise over the whole page, plus a faint vignette, so the

@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
+import TerminalDialog from "./TerminalDialog";
 import { nav, person } from "@/content/site";
 
 /** Sticky site header with desktop links and a compact mobile menu. */
@@ -57,6 +58,8 @@ export default function SiteHeader() {
           </ul>
 
           <span aria-hidden className="hidden md:block w-px h-4 bg-rule" />
+
+          <TerminalDialog />
 
           <ThemeToggle />
 

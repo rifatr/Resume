@@ -186,6 +186,19 @@ export const composition = [
   { label: "Tools", items: "Git · Claude Code · Gemini & GPT APIs" },
 ] as const;
 
+// A deliberately short terminal view. Edit this list without changing the
+// complete skills specimen above.
+export const topSkills = [
+  "Backend systems",
+  "Payments",
+  "Python",
+  "C#",
+  "F#",
+  ".NET",
+  "FastAPI",
+  "gRPC",
+] as const;
+
 export const contests = {
   period: "2019 to present",
   role: "Contestant & Judge",
