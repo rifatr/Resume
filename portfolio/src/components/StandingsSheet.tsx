@@ -104,28 +104,44 @@ export default function StandingsSheet() {
             </tbody>
           </table>
 
-          <h4 className="smallcaps text-[1.08rem] text-oxblood mt-10 sm:mt-12">
-            Problems set &amp; judged
-          </h4>
-          <p className="mt-2 text-ink/85 prose-body text-justify hyphens-auto">
-            Problem setter and judge for national and international contests,
-            including{" "}
-            {contests.authored.map((item, i) => (
-              <span key={item.name}>
-                <a
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="border-b border-rule-strong hover:border-oxblood hover:text-oxblood transition-colors"
-                >
-                  {item.name}
-                </a>
-                {i < contests.authored.length - 2 ? ", " : null}
-                {i === contests.authored.length - 2 ? " and " : null}
-                {i === contests.authored.length - 1 ? "." : null}
-              </span>
-            ))}
-          </p>
+          <section className="mt-12 pt-6 sm:mt-16 sm:pt-8">
+            <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="smallcaps text-[0.92rem] text-oxblood">Problems set &amp; judged</p>
+                <h3 className="font-display impress mt-2 text-[clamp(1.9rem,4vw,2.8rem)] leading-tight">
+                  On the other side of the judge&apos;s desk
+                </h3>
+              </div>
+            </div>
+
+            <p className="mt-4 max-w-[56ch] text-ink/85 text-justify hyphens-auto">
+              Problem setter and judge for national and international contests,
+              from writing the problems to keeping the scoreboard honest.
+            </p>
+
+            <ol className="mt-8 grid gap-x-8 gap-y-0 sm:grid-cols-2">
+              {contests.authored.map((item, index) => (
+                <li key={item.name} className="group border-t border-rule py-4">
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex min-h-12 items-baseline gap-4 transition-colors hover:text-oxblood"
+                  >
+                    <span className="font-mono text-[0.8rem] text-ink-faded group-hover:text-oxblood">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="min-w-0 flex-1 font-display text-[1.35rem] leading-tight">
+                      {item.name}
+                    </span>
+                    <span aria-hidden className="text-brass text-[1.05rem] transition-transform group-hover:translate-x-1">
+                      &#8599;
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </section>
         </div>
       </div>
     </section>
