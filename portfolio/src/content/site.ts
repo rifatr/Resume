@@ -46,6 +46,7 @@ export type WorkEntry = {
   index?: string;
   section?: string;
   title: string;
+  href?: string;
   meta: string;
   period: string;
   summary: string;
@@ -126,10 +127,47 @@ export const experience: WorkEntry = {
 
 export const featuredProjects: readonly WorkEntry[] = [
   {
-    title: "GhuriAI",
+    title: "MediBuddy AI",
+    href: "https://medibuddy.rifat.app/",
+    meta: "Personal project",
+    period: "Since 2026",
+    summary: `A mobile health organizer for medical records, medication reminders
+      and provider discovery. Prescription intelligence turns uploaded documents
+      into editable drafts, and only what a user confirms becomes a reminder.`,
+    stack: [
+      "TypeScript",
+      "NestJS",
+      "React Native",
+      "Expo",
+      "PostgreSQL",
+      "Prisma",
+      "Azurite",
+    ],
+    points: [
+      {
+        heading: "Confirm before scheduling",
+        body: `AI extracts medicines, dosage, duration and follow-up dates
+          into an editable draft. Device notifications are registered only after
+          the user confirms the extracted data.`,
+      },
+      {
+        heading: "Private medical records",
+        body: `Prescriptions and reports are stored in private per-user object
+          storage, with identity derived from a verified Firebase token rather
+          than request-body data.`,
+      },
+      {
+        heading: "Care Finder that refuses to guess",
+        body: `Provider discovery is grounded in Google Search, while symptom
+          input is explicitly refused instead of being turned into medical advice.`,
+      },
+    ],
+  },
+    {
+    title: "Escape",
     meta: "Personal project",
     period: "Since 2025",
-    summary: `An AI travel planner that builds detailed day-by-day itineraries
+    summary: `An AI powered travel planner that builds detailed day-by-day itineraries
       with real places, travel times and photos. The mobile client turns a trip
       brief into an itinerary backed by Google Maps data.`,
     stack: [
@@ -165,52 +203,16 @@ export const featuredProjects: readonly WorkEntry[] = [
       },
     ],
   },
-  {
-    title: "MediBuddy AI",
-    meta: "Personal project",
-    period: "Since 2026",
-    summary: `A mobile health organizer for medical records, medication reminders
-      and provider discovery. Prescription intelligence turns uploaded documents
-      into editable drafts, and only what a user confirms becomes a reminder.`,
-    stack: [
-      "TypeScript",
-      "NestJS",
-      "React Native",
-      "Expo",
-      "PostgreSQL",
-      "Prisma",
-      "Azurite",
-    ],
-    points: [
-      {
-        heading: "Confirm before scheduling",
-        body: `GPT-5.6 extracts medicines, dosage, duration and follow-up dates
-          into an editable draft. Device notifications are registered only after
-          the user confirms the extracted data.`,
-      },
-      {
-        heading: "Private medical records",
-        body: `Prescriptions and reports are stored in private per-user object
-          storage, with identity derived from a verified Firebase token rather
-          than request-body data.`,
-      },
-      {
-        heading: "Care Finder that refuses to guess",
-        body: `Provider discovery is grounded in Google Search, while symptom
-          input is explicitly refused instead of being turned into medical advice.`,
-      },
-    ],
-  },
 ];
 
 export const catalogue = [
   {
     name: "Porua AI",
     blurb:
-      "AI study tutor that answers from uploaded class notes and cites its sources",
+      "AI study tutor backend that answers from uploaded class notes and cites its sources",
     stack: "Python · FastAPI · SQLAlchemy · PostgreSQL · Gemini · Pytest · Docker",
-    status: "Personal",
-    href: null,
+    status: "Source",
+    href: "https://github.com/rifatr/porua-ai",
   },
   {
     name: "Shorojontro",

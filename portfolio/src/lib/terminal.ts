@@ -36,7 +36,7 @@ const projects = [
     name: project.title,
     description: project.summary.replace(/\s+/g, " ").trim(),
     stack: project.stack.join(" · "),
-    href: null,
+    href: project.href ?? null,
     status: "Featured",
   })),
   ...catalogue.map((project) => ({

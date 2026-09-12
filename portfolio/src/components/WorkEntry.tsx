@@ -26,7 +26,21 @@ export default function WorkEntry({
 
         <div className="min-w-0">
           <h3 className="font-display impress text-[clamp(2rem,4.6vw,3.1rem)] leading-tight font-semibold">
-            {entry.title}
+            {entry.href ? (
+              <a
+                href={entry.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-baseline gap-2 hover:text-oxblood transition-colors"
+              >
+                {entry.title}
+                <span aria-hidden className="text-brass text-[0.95rem]">
+                  &#8599;
+                </span>
+              </a>
+            ) : (
+              entry.title
+            )}
           </h3>
 
           <p className="mt-4 text-[1.15rem] sm:text-[1.3rem] leading-[1.6] text-ink/90 prose-body text-justify hyphens-auto">
